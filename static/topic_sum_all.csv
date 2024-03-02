@@ -1,0 +1,10 @@
+topic,clinton_freq,clinton_count,trump_freq,trump_count
+campaign_message,4362,208,5552,180
+demographic_issue,727,65,314,52
+economic_policy,1145,102,590,85
+emotional_word,1475,137,2418,156
+national_identity,1684,97,1737,111
+opponents_reference,3458,108,2889,130
+other_topic,10515,1743,9577,1743
+security_policy,824,114,845,122
+social_issue,1605,140,949,128
