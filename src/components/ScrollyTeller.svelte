@@ -62,7 +62,6 @@
     selected_word = selected_word.filter(selected => selected !== word)
     selected_length-=1;
     selected = selected_word;
-    inputText = "";
   }
   //get frequency for input word
   $: filtered_hillary = hillaryData.filter((d) => d.Word == prefix.toLowerCase());
