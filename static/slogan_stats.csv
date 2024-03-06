@@ -1,8 +1,14 @@
-slogan,num_tweets,Clinton,Trump
-MAGA,66,0,1
-Make America Great Again,97,0,1
-America First,7,0,1
-Love Trumps Hate,9,1,0
-Stronger Together,28,1,0
-Hillary for America,1,1,0
-I'm with her,1,1,0
+slogan,num_tweets,Clinton,Trump,score,polarity,subjectivity,focus
+America First,74,0,1,0.0,0.25,0.3333333333333333,goal
+Crooked Hillary,22,0,1,0.0,0.0,0.1,attack opponent
+Make America Great Again,648,0,1,0.6249,0.8,0.75,goal
+Make America Safe Again,7,0,1,0.4404,0.5,0.5,goal
+Make America Work Again,2,0,1,0.0,0.0,0.0,goal
+Trump Train,31,0,1,0.0,0.0,0.0,general
+Trump Yourself,3,1,0,0.0,0.0,0.0,attack opponent
+We Made History,3,1,0,0.0,0.0,0.0,unite
+I'm With Her,5,1,0,0.0,0.0,0.0,unite
+I'm With You,60,0,1,0.0,0.0,0.0,unite
+Love Trumps Hate,14,1,0,0.128,-0.15000000000000002,0.75,attack opponent
+Stronger Together,28,1,0,0.3818,0.0,0.0,unite
+Trump2016,343,0,1,0.0,0.0,0.0,general

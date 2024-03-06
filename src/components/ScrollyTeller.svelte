@@ -3,14 +3,19 @@
   import { onMount } from 'svelte';
   import * as d3 from 'd3';
   import Graph from "./Graph.svelte";
+  import Categories from "./Categories.svelte";
   let count, index, offset, progress;
-  $:console.log(index)
+  //$:console.log(index)
  
- 
+  let slogans = [];
+
   let hillaryData = [];
   let trumpData = [];
   let common_words = [];
  
+  let categories = [];
+  let selectedPerson;
+  let selectedCategory;
  
   let prefix = ""; 
   let inputText = "";
@@ -26,10 +31,18 @@
   let selected=[];
   let selected_word = [];
  
- 
- 
- 
   //load data
+  onMount(async () => {
+    const res = await fetch('slogan_stats.csv');
+    const csv = await res.text();
+    slogans = d3.csvParse(csv, d3.autoType)
+  })
+  onMount(async () => {
+    const res = await fetch('category_sum_all.csv');
+    const csv = await res.text();
+    categories = d3.csvParse(csv, d3.autoType)
+    //console.log(categories);
+  })
   onMount(async () => {
     const res = await fetch('hillary_words.csv');
     const csv = await res.text();
@@ -84,6 +97,7 @@
  
   <div class="left-panel">
     <div class=graph-container>
+    <Categories {index} {categories} {selectedCategory} {selectedPerson}/>
     <Graph {index} {filtered_hillary} {filtered_trump} {prefix}{inputText}/>
   </div>
   </div>
