@@ -2,8 +2,8 @@
   import { scaleBand, scaleLinear } from 'd3-scale';
   export let index, filtered_trump, filtered_hillary, selected_word;
   let width = 500;
-  let height = 220;
-  const padding = { top: 1, right: 40, bottom: 10, left: 15 };
+  let height = 300;
+  const padding = { top: 20, right: 20, bottom: -10, left: 0 };
 
   // Combine the two and assign with category for bars
   $: combinedData = [
@@ -46,6 +46,12 @@
   <h2>Proportion of Selected Words In Each Nominee's Tweets </h2>
   <div class="chart" bind:clientWidth={width} bind:clientHeight={height}>
     <svg>
+      <g class="legend" transform="translate({width +30}, {padding.top-10})">
+        <rect x="0" y="0" width="15" height="15" fill="red" />
+        <text x="30" y="12" font-size="0.9em">Trump</text>
+        <rect x="0" y="20" width="15" height="15" fill="#0800fb" />
+        <text x="30" y="32" font-size="0.9em">Hillary</text>
+      </g>
       <g class="axis x-axis" transform="translate(0, {padding.top})">
         {#each xTicks as tick}
           <g class="tick tick-{tick}" transform="translate({xScale(tick)}, 0)">
@@ -89,8 +95,8 @@
 	}
 
 	svg {
-		width: 100%;
-		height: 350px;
+		width: 120%;
+		height: 400px;
 	}
 
 	.tick {
