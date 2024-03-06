@@ -1,4 +1,4 @@
-<script>
+c<script>
   import Scroller from "@sveltejs/svelte-scroller";
   import { onMount } from 'svelte';
   import * as d3 from 'd3';
@@ -77,8 +77,8 @@
     selected = selected_word;
   }
   //get frequency for input word
-  $: filtered_hillary = hillaryData.filter((d) => d.Word == prefix.toLowerCase());
-  $: filtered_trump = trumpData.filter((d) => d.Word == prefix.toLowerCase());
+  $: filtered_hillary = selected_word.map(word => hillaryData.filter((d) => d.Word == word.toLowerCase()));
+  $: filtered_trump = selected_word.map(word => trumpData.filter((d) => d.Word == word.toLowerCase()));
   //get five suggest words when typing in
   $: if (inputText !== "") {
     suggest_words = common_words.filter((d) => String(d.Word).startsWith(inputText.toLowerCase())).slice(0, 5);
@@ -98,7 +98,7 @@
   <div class="left-panel">
     <div class=graph-container>
     <Categories {index} {categories} {selectedCategory} {selectedPerson}/>
-    <Graph {index} {filtered_hillary} {filtered_trump} {prefix}{inputText}/>
+    <Graph {index} {filtered_hillary} {filtered_trump} {selected_word}/>
   </div>
   </div>
   <div class="right-panel">
