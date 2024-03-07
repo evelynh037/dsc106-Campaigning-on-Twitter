@@ -47,7 +47,7 @@
 </script>
 
 {#if index === 2} 
-<h2>Frequency of Tweets in Different Topics</h2>
+<h2>Number of Tweets in Different Topics</h2>
 <div class="chart" bind:clientWidth={width} bind:clientHeight={height}>
 	<svg>
 		<!-- y axis -->
@@ -55,7 +55,7 @@
 			{#each yTicks as tick}
 				<g class="tick tick-{tick}" transform="translate(0, {yScale(tick)})">
 					<line x2="100%" />
-					<text y="-4">{tick}'Frequency per 3,000 tweets'</text>
+					<text y="-4">{tick}'Count per 3,000 tweets'</text>
 				</g>
 			{/each}
 		</g>
@@ -138,7 +138,7 @@
 	}
 
 	.tick text {
-		fill: #ccc;
+		fill: 'black';
 		text-anchor: start;
 	}
 

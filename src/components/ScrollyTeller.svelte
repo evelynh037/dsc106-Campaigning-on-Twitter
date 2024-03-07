@@ -4,6 +4,7 @@ c<script>
   import * as d3 from 'd3';
   import Graph from "./Graph.svelte";
   import Categories from "./Categories.svelte";
+  import Slogan from "./Slogan.svelte";
   let count, index, offset, progress;
   //$:console.log(index)
  
@@ -97,6 +98,7 @@ c<script>
  
   <div class="left-panel">
     <div class=graph-container>
+    <Slogan {index}/>
     <Categories {index} {categories} {selectedCategory} {selectedPerson}/>
     <Graph {index} {filtered_hillary} {filtered_trump} {selected_word}/>
   </div>

@@ -1,0 +1,53 @@
+export default {
+    name: 'slogans',
+    children: [
+      {
+        name: 'General Campaign',
+        children: [
+          {
+            name: 'Neutral Sentiment (Range -0.1 to 0.1)',
+            children: [
+              { name: 'Trump Train', value: 31, score: 0, candidate: 'Trump' },
+              { name: 'Trump 2016', value: 343, score: 0, candidate: 'Trump' },
+              { name: 'Clinton 2016', value: 2, score:0, candidate: 'Clinton'},
+            ],
+          },
+        ],
+      },
+      {
+        name: 'Attack on Opponent',
+        children: [
+          {
+            name: 'Neutral Sentiment (Range -0.1 to 0.1)',
+            children: [
+              { name: 'Crooked Hillary', value: 22, score: 0, candidate: 'Trump' },
+              { name: 'Trump Yourself', value: 2, score: 0, candidate: 'Clinton'},
+            ],
+          },
+          { name: 'Negative Sentiment (Less than -0.1)', 
+            children: [
+                {name: "Love Trumps Hate", value: 14, score: -0.15, candidate: "Clinton" },
+            ]
+          },
+        ],
+      },
+      {
+        name: 'Delivering Motivated Goal',
+        children: [
+          {
+            name: 'Appeal to Patriotism',
+            children: [
+              { name: 'Negative Sentiment (Less than -0.1)', 
+                children: 
+                    [{name: 'something', value: 78 },
+                    {name: 'another', value: 23}],
+                },
+              { name: "Neutral Sentiment (Range -0.1 to 0.1)",
+                children:
+                    [{name: 'other slogan', value: 12},]}
+            ],
+          },
+        ],
+      },
+    ]
+};

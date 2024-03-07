@@ -1,59 +1,118 @@
 <script>
-    import { scaleBand, scaleLinear } from 'd3-scale';
-    export let index, slogans;
-    let width = 500;
-    let height = 220;
-    const padding = {top: 20, right: 15, bottom: 30, left: 50 };
-
+    import { hierarchy, interpolateHcl, interpolateZoom, pack, scaleLinear, scaleOrdinal, transition } from 'd3';
+    export let index;
+	import data from './SloganData';
     
+    const width = 600; //the outer width of the chart, in pixels
+    const height = width; // the outer height of the chart, in pixels
+    const margin = 20; //the overall margin between the circle packs to the viewport edge
+    const backgroundColor = 'transparent'; // the background color of the chart
+    const fontSize = 15; //the font size of the text labels
+
+    const color = scaleLinear()
+      .domain([0, 5])
+      .range(['hsl(152,80%,80%)', 'hsl(228,30%,40%)'])
+      .interpolate(interpolateHcl);
+
+	const candidate_color = scaleOrdinal()
+		.domain(['red', 'blue'])
+		.range(['Trump', 'Clinton']);
+	
+    const packFunc = pData => pack()
+      .size([width - margin, height - margin])
+      .padding(3)
+      (hierarchy(pData)
+        .sum(d => d.value)
+        .sort((a, b) => b.value - a.value));
+
+    const root = packFunc(data);
+    let activeFocus = root;
+    let view;
+    let activeZoomK = width / root.r * 2;
+    let activeZoomA = root.x;
+    let activeZoomB = root.y;
+
+    const inactiveZoomTo = (v) => {
+      activeZoomK = width / v[2];
+      view = v;
+      activeZoomA = v[0];
+      activeZoomB = v[1];
+    };
+
+    inactiveZoomTo([root.x, root.y, root.r * 2 + margin]);
+
+    const zoom = (d, e) => {
+      e.stopPropagation();
+      const activeFocus0 = activeFocus;
+
+      activeFocus = d;
+
+      transition()
+        .duration(750)
+        .tween('zoom', () => {
+          var i = interpolateZoom(view, [activeFocus.x, activeFocus.y, activeFocus.r * 2 + margin]);
+          return function(t) { 
+            inactiveZoomTo(i(t)); 
+          };
+        });
+    };
 </script>
 
 {#if index === 1} 
-<h2>Frequently Used Campaign Slogans</h2>
-<div class="chart" bind:clientWidth={width} bind:clientHeight={height}>
-    <svg>
-	</svg>
-</div>
+<h2>Slogans in Tweets Analysis</h2>
+<svg class="chart" width={width} height={height} style="background: {backgroundColor};" on:click={(e) => zoom(root, e)}   >
+    <g transform="translate({width / 2},{height / 2})">
+        {#each root.descendants().slice(1) as rootData}
+            <!-- svelte-ignore a11y-mouse-events-have-key-events -->
+            <circle class={rootData.parent ? rootData.children ? 'node' : 'node node--leaf' : 'node node--root'}
+                fill={rootData.children ? color(rootData.depth) : 'null'} 
+                on:click={(e) => {if (activeFocus !== rootData) zoom(rootData, e);}}
+                transform="translate({(rootData.x - activeZoomA) * activeZoomK},{(rootData.y - activeZoomB) * activeZoomK})"
+                r={rootData.r * activeZoomK}
+            ></circle>
+        {/each}
+        {#each root.descendants() as rootDes}
+            <text font-size='{fontSize}px' class="label" 
+                style="fill-opacity: {rootDes.parent === activeFocus ? 1 : 0}; display: {rootDes.parent === activeFocus ? "inline" : "none"};"
+                transform="translate({(rootDes.x - activeZoomA) * activeZoomK},{(rootDes.y - activeZoomB) * activeZoomK})"
+            >{rootDes.data.name}</text>
+        {/each}
+    </g>
+</svg>
 {/if}
 
 <style>
-
-	h2 {
+h2 {
 		text-align: center;
 	}
 
-	.chart {
+.chart {
 		width: 100%;
-		max-width: 500px;
-		margin: auto;
+		margin: 20 auto;
 	}
 
-	svg {
-		width: 100%;
-		height: 350px;
-	}
+.node {
+  cursor: pointer;
+}
 
-	.tick {
-		font-family: "Times New Roman", Times, serif;
-		font-size: 0.725em;
-		font-weight: 200;
-	}
+.node:hover {
+  stroke: #000;
+  stroke-width: 1.5px;
+}
 
-	.tick line {
-		stroke: #3d3d3b;
-		stroke-dasharray: 2;
-	}
+.node--leaf {
+  fill: white;
+}
 
-	.tick text {
-		fill: #000000;
-		text-anchor: start;
-	}
+.label {
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  text-anchor: middle;
+  text-shadow: 0 1px 0 #fff, 1px 0 0 #fff, -1px 0 0 #fff, 0 -1px 0 #fff;
+}
 
-	.tick.tick-0 line {
-		stroke-dasharray: 0;
-	}
-
-	.bars rect {
-		opacity: 0.9;
-	}
+.label,
+.node--root,
+.node--leaf {
+  pointer-events: none;
+}
 </style>
