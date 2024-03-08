@@ -90,12 +90,12 @@
 
 	.chart {
 		width: 100%;
-		max-width: 800px;
+		max-width: 500px;
 		margin: auto;
 	}
 
 	svg {
-		width: 120%;
+		width: 100%;
 		height: 500px;
 	}
 
