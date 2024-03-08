@@ -7,17 +7,13 @@ c<script>
   import Slogan from "./Slogan.svelte";
   import Donut from './Donut.svelte';
   let count, index, offset, progress;
-  //$:console.log(index)
  
   let slogans = [];
 
   let hillaryData = [];
   let trumpData = [];
   let common_words = [];
- 
-  let categories = [];
-  let selectedPerson;
-  let selectedCategory;
+
  
   let prefix = ""; 
   let inputText = "";
@@ -32,18 +28,13 @@ c<script>
   let is_there = false;
   let selected=[];
   let selected_word = ["gun","border","women"];
+  let selectedCategory = 'security_policy';
  
   //load data
   onMount(async () => {
     const res = await fetch('slogan_stats.csv');
     const csv = await res.text();
     slogans = d3.csvParse(csv, d3.autoType)
-  })
-  onMount(async () => {
-    const res = await fetch('category_sum_all.csv');
-    const csv = await res.text();
-    categories = d3.csvParse(csv, d3.autoType)
-    //console.log(categories);
   })
   onMount(async () => {
     const res = await fetch('hillary_words.csv');
@@ -101,7 +92,7 @@ c<script>
     <div class=graph-container>
     <Donut {index}/>
     <Slogan {index}/>
-    <Categories {index} {categories} {selectedCategory} {selectedPerson}/>
+    <Categories {index} {selectedCategory}/>
     <Graph {index} {filtered_hillary} {filtered_trump} {selected_word}/>
   </div>
   </div>
@@ -178,18 +169,21 @@ c<script>
  <style>
   .header {
     position: absolute;
-    left:0;
+    left: 0;
     width: 101vw;
-    height: 60vh;
+    height: 105%;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    background-color: #0073d8;
+    background-image: linear-gradient(to bottom, rgba(24, 106, 178, 0.7), rgba(80, 89, 98, 0.7)), url('background.jpeg');
+    background-size: cover;
+    background-position: center;
     color: #ffffff;
     z-index: 99;
     top: 0px;
-  }
+}
+
  
  
   .sectionHeader {
@@ -225,6 +219,9 @@ c<script>
     min-height: 110vh;
     color: black;
     background-color: #4ba9e380;
+    background-image: linear-gradient(to top, rgba(123, 186, 237, 0.7), rgba(185, 215, 242, 0.625), rgba(117, 185, 241, 0.7));
+    background-size: cover;
+    background-position: center;
   }
  
  
@@ -263,7 +260,7 @@ c<script>
  input {
   width: 250px;
   border: 1px solid #ccc;
-  padding: 9px;
+  padding: 0px;
   font-size: 15px;
   transition: width 0.2s;
   border-radius: 1em;

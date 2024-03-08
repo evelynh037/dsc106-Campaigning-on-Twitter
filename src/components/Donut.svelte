@@ -1,6 +1,7 @@
 <script>
     import * as d3 from "d3";
     export let index;
+    import { tweened } from 'svelte/motion';
   
     let data = [
       { name: "Hillary Clinton", electoralVotes: 227, popularVotePercentage: 48.2 },
@@ -38,6 +39,8 @@
   
     const arcsElectoral = pieElectoral(data);
     const arcsPopular = piePopular(data);
+
+    let progress = tweened(0, { duration: 1000 });
   </script>
 
 {#if index === 1} 
@@ -46,7 +49,7 @@
     <p6>Left: Electoral Votes | Right: Popular Vote</p6>
   </aside>
 <div class="chart">
-  <svg {width} {height} viewBox={`-${width } -${height / 2} ${width * 3 + padding * 2} ${height}`}>
+  <svg {width} {height} viewBox={`-${width } -${height / 2} ${width * 2.5 + padding * 2} ${height}`}>
     <g class="electoral-votes" transform={`translate(${-width / 3 - padding / 2}, 0)`}>
       {#each arcsElectoral as slice}
         <path d={arcPathElectoral(slice)} fill={colourScale(slice.data.name)} stroke="white" />
@@ -91,18 +94,26 @@
   
   
   <style>
+    p {
+		text-align: center;
+		font-size: 1.2em;
+	}
+  p6 {
+		text-align: center;
+		font-size: 0.8em;
+	}
     aside {
       text-align: center;
       font-family:"Times New Roman", Times, serif;
       font-size: 23px; 
     }
     .chart {
-      width: 120%;
+      width: 100%;
       max-width: 900px;
       margin: auto;
     }
     svg {
-      width: 120%;
+      width: 100%;
       height: 500px;
     }
   </style>

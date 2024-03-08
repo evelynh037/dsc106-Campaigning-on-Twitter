@@ -3,7 +3,7 @@
   export let index, filtered_trump, filtered_hillary, selected_word;
   let width = 500;
   let height = 300;
-  const padding = { top: 20, right: 20, bottom: -10, left: 0 };
+  const padding = { top: 70, right: 50, bottom: 30, left: 50 };
 
   // Combine the two and assign with category for bars
   $: combinedData = [
@@ -19,7 +19,6 @@
       element.proportion = (element.Frequency / total) * 100
     });
   });
-  $: console.log(combinedData)
 
   // Create scales
   $: yScale = scaleBand()
@@ -46,12 +45,12 @@
   <h2>Proportion of Selected Words In Each Nominee's Tweets </h2>
   <div class="chart" bind:clientWidth={width} bind:clientHeight={height}>
     <svg>
-      <g class="legend" transform="translate({width +50}, {padding.top-10})">
-        <rect x="0" y="0" width="15" height="15" fill="#00bfff" />
+      <g class="legend" transform="translate({width-80}, {padding.top - 60})">
+        <rect x="0" y="0" width="15" height="15" fill="#ff4500" />
         <text x="30" y="12" font-size="0.9em">Trump</text>
-        <rect x="0" y="20" width="15" height="15" fill="#ff4500" />
+        <rect x="0" y="20" width="15" height="15" fill="#00bfff" />
         <text x="30" y="32" font-size="0.9em">Hillary</text>
-      </g>
+        </g>
       <g class="axis x-axis" transform="translate(0, {padding.top})">
         {#each xTicks as tick}
           <g class="tick tick-{tick}" transform="translate({xScale(tick)}, 0)">
@@ -63,40 +62,45 @@
       <g class="axis y-axis" transform="translate({padding.left}, 0)">
         {#each selected_word as word}
           <g class="tick" transform="translate(0, {yScale(word) + yScale.bandwidth() / 2})">
-            <text transform="rotate(0)" x="0" y="0" dy="2.0em" text-anchor="end">{word}</text>
+            <text transform="rotate(0)" x="3" y="{yScale.bandwidth()/4.25}"  dy="0.35em" >{word}</text>
           </g>
         {/each}
       </g>
       <g class="bars">
         {#each combinedData as {Word, proportion, category}, i}
           <rect
+            class="grow"
             y={yScale(Word) + (category === 'Hillary' ? yScale.bandwidth() / 4 : yScale.bandwidth() / 4)}
-            x={(category === 'Hillary' ? xScale(0) : xScale(100) - xScale(proportion)+padding.left)}
+            x={(category === 'Hillary' ? xScale(0) : xScale(100) - xScale(proportion) + padding.left)}
             height={yScale.bandwidth() / 2.5}
             width={xScale(proportion) - xScale(0)}
             fill={category === 'Hillary' ? '#00bfff' : '#ff4500'}
           />
         {/each}
       </g>
+      
     </svg>
   </div>
 {/if}
 
 <style>
 
-	h2 {
+h2 {
 		text-align: center;
+		font-size: 1.7em;
 	}
 
 	.chart {
-		width: 100%;
-		max-width: 500px;
-		margin: auto;
+	display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 65%; 
+    margin: auto;
 	}
 
 	svg {
-		width: 130%;
-		height: 500px;
+		width: 120%;
+		height: 560px;
 	}
 
 	.tick {
@@ -113,7 +117,7 @@
 	.tick text {
 		fill: #000000;
 		text-anchor: start;
-    font-size: 1.4em;
+    font-size: 1.6em;
 	}
 
 	.tick.tick-0 line {
@@ -123,4 +127,14 @@
 	.bars rect {
 		opacity: 0.9;
 	}
+  @keyframes grow {
+    from {
+        width: 0;
+    }
+   
+}
+
+.grow {
+    animation: grow 1s ease-out;
+}
 </style>
