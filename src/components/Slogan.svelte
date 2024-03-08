@@ -58,7 +58,7 @@
     };
 </script>
 
-{#if index === 1} 
+{#if index === 2} 
 <h2>Slogans in Tweets Analysis</h2>
 <svg class="chart" width={width} height={height} style="background: {backgroundColor};" on:click={(e) => zoom(root, e)}   >
     <g transform="translate({width / 2},{height / 2})">

@@ -42,7 +42,7 @@
   $: xTicks = generateXTicks(100, 100 / 5);
 </script>
 
-{#if index === 3} 
+{#if index === 4} 
   <h2>Proportion of Selected Words In Each Nominee's Tweets </h2>
   <div class="chart" bind:clientWidth={width} bind:clientHeight={height}>
     <svg>
@@ -95,7 +95,7 @@
 	}
 
 	svg {
-		width: 100%;
+		width: 130%;
 		height: 500px;
 	}
 

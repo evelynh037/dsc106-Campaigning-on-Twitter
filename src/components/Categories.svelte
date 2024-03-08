@@ -38,7 +38,7 @@
     $: barWidth = innerWidth / xTicks.length;
 </script>
 
-{#if index === 2} 
+{#if index === 3} 
 <h2>Number of Tweets in Different Topics</h2>
 <div class="chart" bind:clientWidth={width} bind:clientHeight={height}>
 	<svg>

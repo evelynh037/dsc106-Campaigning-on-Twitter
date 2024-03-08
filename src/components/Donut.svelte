@@ -103,7 +103,7 @@
     }
     svg {
       width: 120%;
-      height: 600px;
+      height: 500px;
     }
   </style>
   
