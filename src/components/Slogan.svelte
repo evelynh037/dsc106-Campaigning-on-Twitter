@@ -9,6 +9,7 @@
     const margin = 20; //the overall margin between the circle packs to the viewport edge
     const backgroundColor = 'transparent'; // the background color of the chart
     const fontSize = 15; //the font size of the text labels
+    const padding = { top: 70, right: 50, bottom: 30, left: 50 };
 
     const color = scaleLinear()
       .domain([0, 5])
@@ -63,6 +64,12 @@
 {#if index === 2} 
 <h2>Slogans in Tweets Analysis</h2>
 <svg class="chart" width={width} height={height} style="background: {backgroundColor};" on:click={(e) => zoom(root, e)}   >
+  <g class="legend" transform="translate({width-80}, {padding.top - 60})">
+    <rect x="0" y="0" width="15" height="15" fill="#ff4500" />
+    <text x="30" y="12" font-size="0.9em">Trump</text>
+    <rect x="0" y="20" width="15" height="15" fill="#00bfff" />
+    <text x="30" y="32" font-size="0.9em">Hillary</text>
+    </g>
     <g transform="translate({width / 2},{height / 2})">
       {#each root.descendants().slice(1) as rootData}
     <circle class={rootData.parent ? rootData.children ? 'node' : 'node node--leaf' : 'node node--root'}
