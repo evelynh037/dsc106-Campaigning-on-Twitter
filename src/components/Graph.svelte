@@ -46,10 +46,10 @@
   <h2>Proportion of Selected Words In Each Nominee's Tweets </h2>
   <div class="chart" bind:clientWidth={width} bind:clientHeight={height}>
     <svg>
-      <g class="legend" transform="translate({width +30}, {padding.top-10})">
-        <rect x="0" y="0" width="15" height="15" fill="red" />
+      <g class="legend" transform="translate({width +50}, {padding.top-10})">
+        <rect x="0" y="0" width="15" height="15" fill="#00bfff" />
         <text x="30" y="12" font-size="0.9em">Trump</text>
-        <rect x="0" y="20" width="15" height="15" fill="#0800fb" />
+        <rect x="0" y="20" width="15" height="15" fill="#ff4500" />
         <text x="30" y="32" font-size="0.9em">Hillary</text>
       </g>
       <g class="axis x-axis" transform="translate(0, {padding.top})">
@@ -63,7 +63,7 @@
       <g class="axis y-axis" transform="translate({padding.left}, 0)">
         {#each selected_word as word}
           <g class="tick" transform="translate(0, {yScale(word) + yScale.bandwidth() / 2})">
-            <text transform="rotate(0)" x="2" y="30" dy="0.4em" text-anchor="end">{word}</text>
+            <text transform="rotate(0)" x="0" y="0" dy="2.0em" text-anchor="end">{word}</text>
           </g>
         {/each}
       </g>
@@ -74,7 +74,7 @@
             x={(category === 'Hillary' ? xScale(0) : xScale(100) - xScale(proportion)+padding.left)}
             height={yScale.bandwidth() / 2.5}
             width={xScale(proportion) - xScale(0)}
-            fill={category === 'Hillary' ? '#0800fb' : 'red'}
+            fill={category === 'Hillary' ? '#00bfff' : '#ff4500'}
           />
         {/each}
       </g>
@@ -90,13 +90,13 @@
 
 	.chart {
 		width: 100%;
-		max-width: 500px;
+		max-width: 800px;
 		margin: auto;
 	}
 
 	svg {
 		width: 120%;
-		height: 400px;
+		height: 500px;
 	}
 
 	.tick {

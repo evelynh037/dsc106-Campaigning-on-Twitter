@@ -5,6 +5,7 @@ c<script>
   import Graph from "./Graph.svelte";
   import Categories from "./Categories.svelte";
   import Slogan from "./Slogan.svelte";
+  import Donut from './Donut.svelte';
   let count, index, offset, progress;
   //$:console.log(index)
  
@@ -30,7 +31,7 @@ c<script>
   let selected_length = 0;
   let is_there = false;
   let selected=[];
-  let selected_word = [];
+  let selected_word = ["gun","border","women"];
  
   //load data
   onMount(async () => {
@@ -98,6 +99,7 @@ c<script>
  
   <div class="left-panel">
     <div class=graph-container>
+    <Donut {index}/>
     <Slogan {index}/>
     <Categories {index} {categories} {selectedCategory} {selectedPerson}/>
     <Graph {index} {filtered_hillary} {filtered_trump} {selected_word}/>
