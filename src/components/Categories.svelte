@@ -2,15 +2,14 @@
     import { onMount } from 'svelte';
     import { scaleBand, scaleLinear } from 'd3-scale';
     export let index, categories, selectedCategory, selectedPerson;
-    let width = 500;
-    let height = 500;
+    let width = 600;
+    let height = 700;
 
     let xTicks = [];
 	let yTicks = [];
-	const padding = { top: 20, right: 15, bottom: 20, left: 25 };
+	const padding = { top: 20, right: 15, bottom: -10, left: 25 };
     let filteredData = [];
     selectedCategory = 'demographic_issue';
-    selectedPerson = 'Clinton';
 
     onMount(() => {
         updateChart();
@@ -19,18 +18,11 @@
     $: updateChart();
 
     function updateChart() {
-        console.log('Selected Person:', selectedPerson);
-        console.log('Selected Category:', selectedCategory);
         filteredData = categories.filter(
-        (d) => d[selectedCategory] === 1
+        (d) => d.topic === selectedCategory
         );
         xTicks = filteredData.map((d) => d.category);
-        if (selectedPerson === 'Clinton') {
-            yTicks = filteredData.map((d) => d.clinton_freq);
-        } else if (selectedPerson === 'Trump') {
-            yTicks = filteredData.map((d) => d.trump_freq);
-        }
-        console.log(filteredData);
+        yTicks = filteredData.map((d) => d.difference);
     }
 
     $: xScale = scaleBand()
@@ -50,6 +42,14 @@
 <h2>Number of Tweets in Different Topics</h2>
 <div class="chart" bind:clientWidth={width} bind:clientHeight={height}>
 	<svg>
+        <!-- Legend -->
+        <g transform={`translate({width+40}, {padding.top - 10})`}>
+            <rect x="0" y="0" width="15" height="15" fill="#ff4500" />
+            <text x="20" y="12.5" font-size="12">Clinton Mentioned More</text>
+            <rect x="0" y="25" width="15" height="15" fill="#00bfff" />
+            <text x="20" y="37.5" font-size="12">Trump Mentioned More</text>
+        </g>
+
 		<!-- y axis -->
 		<g class="axis y-axis">
 			{#each yTicks as tick}
@@ -79,6 +79,7 @@
 					y={yScale(yTicks[i])}
 					width={barWidth - 4}
 					height={yScale(0) - yScale(yTicks[i])}
+                    fill={point.hc_more === 1 ? '#ff4500' : '#00bfff'}
 				/>
 			{/each}
 		</g>
@@ -86,12 +87,6 @@
 </div>
 
 <div>
-  <label for="personSelect">Select Candidate:</label>
-  <select id="personSelect" bind:value={selectedPerson} on:change={updateChart}>
-    <option>Clinton</option>
-    <option>Trump</option>
-  </select>
-
   <label for="categorySelect">Select Category:</label>
   <select id="categorySelect" bind:value={selectedCategory} on:change={updateChart}>
     <option>demographic_issue</option>
@@ -101,7 +96,6 @@
     <option>economic_policy</option>
     <option>campaign_message</option>
     <option>national_identity</option>
-    <option>opponents_reference</option>
   </select>
 
   <div id="chart"></div>
@@ -116,14 +110,14 @@
 
 	.chart {
 		width: 100%;
-		max-width: 500px;
+		max-width: 600px;
 		margin: 0 auto;
 	}
 
 	svg {
 		position: relative;
 		width: 100%;
-		height: 200px;
+		height: 400px;
 	}
 
 	.tick {
@@ -151,7 +145,6 @@
 	}
 
 	.bars rect {
-		fill: #a11;
 		stroke: none;
 		opacity: 0.65;
 	}

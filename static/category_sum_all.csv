@@ -1,34 +1,28 @@
-category,clinton_freq,clinton_count,topic,trump_freq,trump_count,campaign_message,demographic_issue,economic_policy,emotional_word,national_identity,opponents_reference,other_topic,security_policy,social_issue
-age,51,6,demographic_issue,14,4,0,1,0,0,0,0,0,0,0
-attack,105,16,emotional_word,534,27,0,0,0,1,0,0,0,0,0
-econ,429,49,economic_policy,223,40,0,0,1,0,0,0,0,0,0
-edu,305,21,social_issue,53,15,0,0,0,0,0,0,0,0,1
-endorse,903,52,emotional_word,1064,60,0,0,0,1,0,0,0,0,0
-environ,57,12,social_issue,50,12,0,0,0,0,0,0,0,0,1
-event,1057,51,campaign_message,2385,60,1,0,0,0,0,0,0,0,0
-foreign,208,44,security_policy,350,51,0,0,0,0,0,0,0,1,0
-gender,394,29,demographic_issue,174,20,0,1,0,0,0,0,0,0,0
-health,255,23,social_issue,93,23,0,0,0,0,0,0,0,0,1
-immig,144,13,security_policy,105,11,0,0,0,0,0,0,0,1,0
-job,465,33,economic_policy,257,26,0,0,1,0,0,0,0,0,0
-justice,372,35,social_issue,267,35,0,0,0,0,0,0,0,0,1
-lgbt,57,5,demographic_issue,7,4,0,1,0,0,0,0,0,0,0
-media,73,19,campaign_message,450,33,1,0,0,0,0,0,0,0,0
-millitary,84,12,security_policy,80,12,0,0,0,0,0,0,0,1,0
-name,3458,108,opponents_reference,2889,130,0,0,0,0,0,1,0,0,0
-neg,467,69,emotional_word,820,69,0,0,0,1,0,0,0,0,0
-other,10309,1732,other_topic,9392,1732,0,0,0,0,0,0,1,0,0
-patriotic,798,24,national_identity,599,23,0,0,0,0,1,0,0,0,0
-policy,589,46,campaign_message,480,43,1,0,0,0,0,0,0,0,0
-poverty,553,32,social_issue,156,26,0,0,0,0,0,0,0,0,1
-promise,2015,59,campaign_message,2279,50,1,0,0,0,0,0,0,0,0
-race,211,23,demographic_issue,78,17,0,1,0,0,0,0,0,0,0
-religion,14,2,demographic_issue,41,7,0,1,0,0,0,0,0,0,0
-security,388,45,security_policy,310,48,0,0,0,0,0,0,0,1,0
-slogan,302,11,campaign_message,288,11,1,0,0,0,0,0,0,0,0
-spanish,389,39,campaign_message,0,0,1,0,0,0,0,0,0,0,0
-state,189,44,national_identity,741,65,0,0,0,0,1,0,0,0,0
-tax,91,4,economic_policy,27,4,0,0,1,0,0,0,0,0,0
-time,206,11,other_topic,185,11,0,0,0,0,0,0,1,0,0
-trade,160,16,economic_policy,83,15,0,0,1,0,0,0,0,0,0
-union,697,29,national_identity,397,23,0,0,0,0,1,0,0,0,0
+category,counts_hc,counts_dt,difference,hc_more,dt_more,topic
+Campaign Event,747,1564,817,0,1,campaign_message
+Campaign Promise,1321,1558,237,0,1,campaign_message
+Name Reference,1689,1450,239,1,0,emotional_word
+Patriotism,487,420,67,1,0,national_identity
+Employment Issue,293,201,92,1,0,economic_policy
+Uniting Public,413,328,85,1,0,national_identity
+Attack Opponents,9,89,80,0,1,emotional_word
+Endorsement,623,759,136,0,1,emotional_word
+State Matters,140,517,377,0,1,national_identity
+News Media,45,222,177,0,1,campaign_message
+Gender Issue,247,155,92,1,0,demographic_issue
+Policy Proposals,435,368,67,1,0,campaign_message
+Foreign Issue,135,244,109,0,1,security_policy
+Economic,246,181,65,1,0,economic_policy
+Justice,215,182,33,1,0,social_issue
+Immigration,83,74,9,1,0,security_policy
+Social Security,235,202,33,1,0,security_policy
+Poverty,442,133,309,1,0,social_issue
+Racial Justice,111,59,52,1,0,demographic_issue
+Taxation,63,23,40,1,0,economic_policy
+Trading Policy,122,65,57,1,0,economic_policy
+Millitary,46,52,6,0,1,security_policy
+Health,158,55,103,1,0,social_issue
+Education,172,40,132,1,0,social_issue
+Environmental Issue,17,45,28,0,1,social_issue
+Population Ageing,38,14,24,1,0,demographic_issue
+LGBTQ,42,7,35,1,0,demographic_issue
