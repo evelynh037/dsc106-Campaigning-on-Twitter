@@ -203,7 +203,7 @@ c<script>
   position:fixed;
   height:100vh;
   width: 65%;
-  background-color: rgba(95, 141, 170, 0.502);
+  background-color: rgba(105, 150, 193, 0.502);
  }
  .right-panel {
     position: absolute;

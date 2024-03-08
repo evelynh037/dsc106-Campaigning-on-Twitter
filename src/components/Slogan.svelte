@@ -2,6 +2,7 @@
     import { hierarchy, interpolateHcl, interpolateZoom, pack, scaleLinear, scaleOrdinal, transition } from 'd3';
     export let index;
 	import data from './SloganData';
+  console.log(data)
     
     const width = 600; //the outer width of the chart, in pixels
     const height = width; // the outer height of the chart, in pixels
@@ -15,8 +16,9 @@
       .interpolate(interpolateHcl);
 
 	const candidate_color = scaleOrdinal()
-		.domain(['red', 'blue'])
-		.range(['Trump', 'Clinton']);
+    .domain(['Trump', 'Hillary'])
+    .range(['#ff4500', '#00bfff']);
+
 	
     const packFunc = pData => pack()
       .size([width - margin, height - margin])
@@ -62,15 +64,16 @@
 <h2>Slogans in Tweets Analysis</h2>
 <svg class="chart" width={width} height={height} style="background: {backgroundColor};" on:click={(e) => zoom(root, e)}   >
     <g transform="translate({width / 2},{height / 2})">
-        {#each root.descendants().slice(1) as rootData}
-            <!-- svelte-ignore a11y-mouse-events-have-key-events -->
-            <circle class={rootData.parent ? rootData.children ? 'node' : 'node node--leaf' : 'node node--root'}
-                fill={rootData.children ? color(rootData.depth) : 'null'} 
-                on:click={(e) => {if (activeFocus !== rootData) zoom(rootData, e);}}
-                transform="translate({(rootData.x - activeZoomA) * activeZoomK},{(rootData.y - activeZoomB) * activeZoomK})"
-                r={rootData.r * activeZoomK}
-            ></circle>
-        {/each}
+      {#each root.descendants().slice(1) as rootData}
+    <circle class={rootData.parent ? rootData.children ? 'node' : 'node node--leaf' : 'node node--root'}
+        fill={rootData.children ? "white" : (rootData.data.candidate === 'Trump' ? '#ff4500' : '#00bfff')}
+        on:click={(e) => {if (activeFocus !== rootData) zoom(rootData, e);}}
+        transform="translate({(rootData.x - activeZoomA) * activeZoomK},{(rootData.y - activeZoomB) * activeZoomK})"
+        r={rootData.r * activeZoomK}
+    ></circle>
+{/each}
+
+  
         {#each root.descendants() as rootDes}
             <text font-size='{fontSize}px' class="label" 
                 style="fill-opacity: {rootDes.parent === activeFocus ? 1 : 0}; display: {rootDes.parent === activeFocus ? "inline" : "none"};"
@@ -100,9 +103,7 @@ h2 {
   stroke-width: 1.5px;
 }
 
-.node--leaf {
-  fill: white;
-}
+
 
 .label {
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
