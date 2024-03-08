@@ -176,7 +176,7 @@ c<script>
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    background-image: linear-gradient(to bottom, rgba(24, 106, 178, 0.7), rgba(80, 89, 98, 0.7)), url('background.jpeg');
+    background-image: linear-gradient(to bottom, rgba(24, 106, 178, 0.7), rgba(80, 89, 98, 0.7)), url('https://graphics.wsj.com/elections/2016/donald-trump-hillary-clinton-on-the-economy/img/trumpVSclinton.jpg');
     background-size: cover;
     background-position: center;
     color: #ffffff;
