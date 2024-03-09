@@ -111,7 +111,7 @@ c<script>
         </section>
         <section class="centered-content">
           <p>Introduction: Twitter has played an increasingly prominent role in the 2016 US Presidential Election. Debates have raged and candidates have risen and fallen based on tweets. </p>
-          <p>This dataset provides approximately 3000 recent tweets from Hillary Clinton and Donald Trump, the two major-party presidential nominees. Follow along this article and get insights as to how the candidates' tweets refelct their electoral results.</p>
+          <p>This analysis is based on a dataset that provides approximately 3000 recent tweets from Hillary Clinton and Donald Trump, the two major-party presidential nominees. Follow along this article and get insights as to how the candidates' tweets refelct their electoral results.</p>
         </section>
         <section class="centered-content">
           <p>As the most symbolic campaign method, the use of slogan attracts public attention and give impression on the candidates that will influence their voting result. </p>

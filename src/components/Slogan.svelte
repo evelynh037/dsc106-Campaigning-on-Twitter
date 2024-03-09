@@ -170,7 +170,7 @@ height: auto; /* Set the height as needed or use a fixed height */
 }
 
 .description-box {
-  background-image: url('text.jpg'); 
+  background-image: url('https://raw.githubusercontent.com/evelynh037/dsc106-final-graph/main/static/text.jpg'); 
   background-repeat: no-repeat;
   background-size: contain; 
   background-position: center center;
