@@ -8,9 +8,9 @@
 	let categories = [];
     let xTicks = [];
     let yTicks = [];
-    const padding = { top: 60, right: 10, bottom: 30, left: 0 };
+    const padding = { top:100, right: 10, bottom: 30, left: 20 };
     let filteredData = [];
-
+	let tooltip = { text: "",text2: "",text2:"", visibility: 'hidden', x: 0, y: 0  };
 	onMount(async () => {
     const res = await fetch('category_sum_all.csv');
     const csv = await res.text();
@@ -47,6 +47,34 @@
         .domain([0, maxFrequency])
         .range([height - padding.bottom, padding.top]);
 
+	function showTP(bar, event) {
+		if (bar.dt_more == 1){
+			tooltip.text = "Out of his 3000 tweets, Trump"
+			tooltip.text2 = "brought up " + bar.category
+			tooltip.text3 = String(bar.difference) + " more times than Clinton"
+		}
+		else{
+			tooltip.text = "Out of her 3000 tweets, Clinton"
+			tooltip.text2 = "brought up " + bar.category
+			tooltip.text3 = String(bar.difference) + " more times than Trump"
+		}
+        const barWidth = xScale.bandwidth();
+        const xCoordinate = xScale(bar.category) + barWidth / 2;
+        const yCoordinate = yScale(bar.difference)-50;
+        const isRightHalf = xCoordinate > width / 2;
+        if (isRightHalf) {
+            tooltip.x = xCoordinate - 110
+        } else {
+            tooltip.x = xCoordinate +5;
+        }
+
+        tooltip.y = yCoordinate;
+        tooltip.visibility = 'visible';
+}
+
+    function hideTP() {
+        tooltip.visibility = 'hidden';
+    }
 </script>
 
 
@@ -88,7 +116,7 @@
 		<g class="axis x-axis">
 			{#each filteredData as point, i (i)}
 				<g class="tick" transform={`translate(${xScale(point.category) + xScale.bandwidth()}, ${height - padding.bottom -9})`}>
-					<text transform="rotate(0)" x="-1"  dy="1.5em"  text-anchor="middle">
+					<text transform="rotate(0)" x="-9"  dy="1.5em"  text-anchor="middle">
 						{point.category}
 					</text>
 				</g>
@@ -97,16 +125,26 @@
 
 		<g class="bars">
 			{#each filteredData as point, i (i)}
-			  <rect
-				class="barGrow"
-				x={xScale(point.category)}
-				y={yScale(point.difference)}
-				width={xScale.bandwidth() * 1.7}
-				height={yScale(0) - yScale(point.difference)}
-				fill={point.hc_more === 1 ? '#00bfff' : '#ff4500'}
-			  />
+				<rect
+					class="barGrow"
+					x={xScale(point.category)}
+					y={yScale(point.difference)}
+					width={xScale.bandwidth() * 1.7}
+					height={yScale(0) - yScale(point.difference)}
+					fill={point.hc_more === 1 ? '#00bfff' : '#ff4500'}
+					on:mouseover={(event) => showTP(point, event)}
+					on:mousemove={(event) => showTP(point, event)}
+					on:mouseout={hideTP}>
+				</rect>
+
 			{/each}
-		  </g>
+		</g>
+		<g class="tooltip-box" transform={`translate(${tooltip.x}, ${tooltip.y})`} visibility={tooltip.visibility}>
+			<rect x={-10} y={-30} width={190} height={50} fill="#D3D3D3" stroke="grey" />
+            <text x={10} y={-15} font-size="0.8em">{tooltip.text}</text>
+            <text x={10} y={0} font-size="0.8em">{tooltip.text2}</text>
+            <text x={10} y={15} font-size="0.8em">{tooltip.text3}</text>
+		</g>	  
 	</svg>
 </div>
 
@@ -129,7 +167,7 @@
 
 	svg {
 		width: 100%;
-		height: 540px;
+		height: 440px;
 	}
 
 	.y-axis .tick text {
@@ -153,7 +191,7 @@
 
 	.x-axis .tick text {
 		text-anchor: middle;
-		font-size: 1.0em;
+		font-size: 0.85em;
 	}
 
 	.bars rect {
@@ -169,5 +207,10 @@
 .barGrow {
     animation: barGrow 1s ;
 }
+.tooltip {
+        font-size: 14px;
+		fill: rgb(2, 100, 12);
+		font-weight: bold;
+    }
 
 </style>

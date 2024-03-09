@@ -100,7 +100,7 @@ h2 {
 
 	svg {
 		width: 120%;
-		height: 560px;
+		height: 500px;
 	}
 
 	.tick {
