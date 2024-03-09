@@ -175,8 +175,8 @@ height: auto; /* Set the height as needed or use a fixed height */
   background-size: contain; 
   background-position: center center;
   width: 180px;
-  height: 242px; 
-  padding:40px;
+  height: 245px; 
+  padding:60px;
 
 }
 
