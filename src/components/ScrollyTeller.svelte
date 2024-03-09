@@ -162,7 +162,7 @@ c<script>
  
   <div class="header">
     <h1 class="sectionHeader">Campaigning on Twitter</h1>
-    <p class="introText">Twitter has played an increasingly prominent role in the 2016 US Presidential Election. Debates have raged and candidates have risen and fallen based on tweets. This dataset provides approximately 3000 recent tweets from Hillary Clinton and Donald Trump, the two major-party presidential nominees.</p>
+    <p class="introText">Twitter has played an increasingly prominent role in the 2016 US Presidential Election. Debates have raged and candidates have risen and fallen based on tweets. This analysis is based on a dataset that provides approximately 3000 recent tweets from Hillary Clinton and Donald Trump, the two major-party presidential nominees.</p>
   </div>
  
  
