@@ -169,11 +169,15 @@ width: 200px; /* Set the width as needed */
 height: auto; /* Set the height as needed or use a fixed height */
 }
 
-/* Style for the description box inside the container */
 .description-box {
-background-color: #fff; /* Set the background color as needed */
-padding: 10px; /* Adjust padding as needed */
-border: 1px solid #ccc; /* Add border styling as needed */
+  background-image: url('text.jpg'); 
+  background-repeat: no-repeat;
+  background-size: contain; 
+  background-position: center center;
+  width: 200px;
+  height: 242px; 
+  padding:40px;
+
 }
 
 .tooltip {
