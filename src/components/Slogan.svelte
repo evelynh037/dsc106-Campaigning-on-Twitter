@@ -174,9 +174,9 @@ height: auto; /* Set the height as needed or use a fixed height */
   background-repeat: no-repeat;
   background-size: contain; 
   background-position: center center;
-  width: 180px;
-  height: 245px; 
-  padding:60px;
+  width: 200px;
+  height: 242px; 
+  padding:35px;
 
 }
 
