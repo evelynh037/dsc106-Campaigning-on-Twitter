@@ -2,7 +2,6 @@
     import { hierarchy, interpolateHcl, interpolateZoom, pack, scaleLinear, scaleOrdinal, transition } from 'd3';
     export let index;
 	import data from './SloganData';
-  console.log(data)
     
     const width = 600; //the outer width of the chart, in pixels
     const height = width; // the outer height of the chart, in pixels
@@ -34,6 +33,9 @@
     let activeZoomK = width / root.r * 2;
     let activeZoomA = root.x;
     let activeZoomB = root.y;
+	let selectedCircle;
+	let descriptionBox;
+	let tooltip;
 
     const inactiveZoomTo = (v) => {
       activeZoomK = width / v[2];
@@ -59,68 +61,146 @@
           };
         });
     };
+
+	const defaultData = {
+		name: "All Slogans Overview",
+		description: "Slogans from both candidates are categorized based on themes. Click on each theme to explore how Trump and Clinton differ in their choice of slogan and think about how those difference might affect their voting results."
+	};
+
+	const showDescription = (d) => {
+		selectedCircle = d;
+		const descriptionBox = document.getElementById('description-box');
+		const { data } = selectedCircle;
+		console.log(data);
+		descriptionBox.innerHTML = `
+		<h3>${data.name}</h3>
+		<p>Description: ${data.description}</p>
+		`;
+		descriptionBox.style.left = `700px`;
+    	descriptionBox.style.top = `20px`;
+		descriptionBox.style.display = 'block';
+	
+	};
+
+	const showTooltip = (d) => {
+			console.log("has root");
+			tooltip.innerHTML = `
+			<h3>${d.name}</h3>
+			<p>Score: ${d.score}</p>
+			<p>Candidate: ${d.candidate}</p>
+			<p>Description: ${d.description}</p>
+			`;
+			tooltip.style.display = 'block';
+	};
+
+	const hideTooltip = () => {
+		if (tooltip) {
+			tooltip.style.display = 'none';
+		}
+	};
 </script>
 
 {#if index === 2} 
-<h2>Slogans in Tweets Analysis</h2>
-<svg class="chart" width={width} height={height} style="background: {backgroundColor};" on:click={(e) => zoom(root, e)}   >
-  <g class="legend" transform="translate({width-80}, {padding.top - 60})">
-    <rect x="0" y="0" width="15" height="15" fill="#ff4500" />
-    <text x="30" y="12" font-size="0.9em">Trump</text>
-    <rect x="0" y="20" width="15" height="15" fill="#00bfff" />
-    <text x="30" y="32" font-size="0.9em">Hillary</text>
-    </g>
-    <g transform="translate({width / 2},{height / 2})">
-      {#each root.descendants().slice(1) as rootData}
-    <circle class={rootData.parent ? rootData.children ? 'node' : 'node node--leaf' : 'node node--root'}
-        fill={rootData.children ? "white" : (rootData.data.candidate === 'Trump' ? '#ff4500' : '#00bfff')}
-        on:click={(e) => {if (activeFocus !== rootData) zoom(rootData, e);}}
-        transform="translate({(rootData.x - activeZoomA) * activeZoomK},{(rootData.y - activeZoomB) * activeZoomK})"
-        r={rootData.r * activeZoomK}
-    ></circle>
-{/each}
+	<h2>Slogans in Tweets Analysis</h2>
+	<svg class="chart" width={width} height={height} style="background: {backgroundColor};" on:click={(e) => {zoom(root, e); showDescription(root)}}   >
+		<g class="legend" transform="translate({width-80}, {padding.top - 60})">
+			<rect x="0" y="0" width="15" height="15" fill="#ff4500" />
+			<text x="30" y="12" font-size="0.9em">Trump</text>
+			<rect x="0" y="20" width="15" height="15" fill="#00bfff" />
+			<text x="30" y="32" font-size="0.9em">Hillary</text>
+		</g>
+		<g transform="translate({width / 2},{height / 2})">
+			{#each root.descendants().slice(1) as rootData}
+			<circle class={rootData.parent ? rootData.children ? 'node' : 'node node--leaf' : 'node node--root'}
+				fill={rootData.children ? "white" : (rootData.data.candidate === 'Trump' ? '#ff4500' : '#00bfff')}
+				stroke='grey'
+				on:click={(e) => {
+					if (activeFocus !== rootData) {
+						zoom(rootData, e); 
+						showDescription(rootData);
+					}
+				}}
+				on:mouseover={() => {
+					if (activeFocus.children) {
+						if (!rootData.children) {
+							showTooltip(rootData)
+						}
+					}}}
+  				on:mouseout={() => hideTooltip()}
+				transform="translate({(rootData.x - activeZoomA) * activeZoomK},{(rootData.y - activeZoomB) * activeZoomK})"
+				r={rootData.r * activeZoomK}
+			></circle>
+			{/each}
 
-  
-        {#each root.descendants() as rootDes}
-            <text font-size='{fontSize}px' class="label" 
-                style="fill-opacity: {rootDes.parent === activeFocus ? 1 : 0}; display: {rootDes.parent === activeFocus ? "inline" : "none"};"
-                transform="translate({(rootDes.x - activeZoomA) * activeZoomK},{(rootDes.y - activeZoomB) * activeZoomK})"
-            >{rootDes.data.name}</text>
-        {/each}
-    </g>
-</svg>
+	
+			{#each root.descendants() as rootDes}
+				<text font-size='{fontSize}px' class="label" 
+					style="fill-opacity: {rootDes.parent === activeFocus ? 1 : 0}; display: {rootDes.parent === activeFocus ? "inline" : "none"};"
+					transform="translate({(rootDes.x - activeZoomA) * activeZoomK},{(rootDes.y - activeZoomB) * activeZoomK})"
+				>{rootDes.data.name}</text>
+			{/each}
+		</g>
+		<div bind:this={tooltip} class="tooltip"></div>
+	</svg>
+	<div class="description-container">
+	<div class="description-box" bind:this={descriptionBox} id="description-box">
+		<!-- Content for the description box goes here -->
+		<h3>{defaultData.name}</h3>
+		<p>Description: {defaultData.description}</p>
+	</div>
+	</div>
 {/if}
 
 <style>
-h2 {
+	h2 {
 		text-align: center;
 	}
 
-.chart {
+	.chart {
 		width: 100%;
 		margin: 20 auto;
 	}
 
-.node {
-  cursor: pointer;
-}
+	.description-container {
+	position: absolute;
+	left: 700px; /* Adjust the left position as needed */
+	top: 80px; /* Adjust the top position as needed */
+	width: 200px; /* Set the width as needed */
+	height: auto; /* Set the height as needed or use a fixed height */
+	}
 
-.node:hover {
-  stroke: #000;
-  stroke-width: 1.5px;
-}
+	/* Style for the description box inside the container */
+	.description-box {
+	background-color: #fff; /* Set the background color as needed */
+	padding: 10px; /* Adjust padding as needed */
+	border: 1px solid #ccc; /* Add border styling as needed */
+	}
 
+	.tooltip {
+	background-color: grey;
+	padding: 10px;
+	border: 1px solid #ccc;
+	display: none;
+	}
 
+	.node {
+		cursor: pointer;
+	}
 
-.label {
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-  text-anchor: middle;
-  text-shadow: 0 1px 0 #fff, 1px 0 0 #fff, -1px 0 0 #fff, 0 -1px 0 #fff;
-}
+	.node:hover {
+		stroke: #000;
+		stroke-width: 1.5px;
+	}
 
-.label,
-.node--root,
-.node--leaf {
-  pointer-events: none;
-}
+	.label {
+		font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+		text-anchor: middle;
+		text-shadow: 0 1px 0 #fff, 1px 0 0 #fff, -1px 0 0 #fff, 0 -1px 0 #fff;
+	}
+
+	.label,
+	.node--root,
+	.node--leaf {
+		pointer-events: none;
+	}
 </style>

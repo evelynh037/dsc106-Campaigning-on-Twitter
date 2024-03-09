@@ -1,5 +1,5 @@
 export default {
-    name: 'slogans',
+    name: 'All Slogans Overview',
     children: [
       {
         name: 'General Campaign',
@@ -7,12 +7,14 @@ export default {
           {
             name: 'Neutral Sentiment (Range -0.1 to 0.1)',
             children: [
-              { name: 'Trump Train', value: 31, score: 0, candidate: 'Trump' },
-              { name: 'Trump 2016', value: 343, score: 0, candidate: 'Trump' },
-              { name: 'Clinton 2016', value: 2, score:0, candidate: 'Clinton'},
+              { name: 'Trump Train', value: 31, score: 0, candidate: 'Trump', description: "This slogan is used by Trump's supporters"},
+              { name: 'Trump 2016', value: 343, score: 0, candidate: 'Trump', description: "This is a general campaign slogan" },
+              { name: 'Clinton 2016', value: 2, score:0, candidate: 'Clinton', description: "another general campaign slogan"},
             ],
+            description: "Sentiment neutral",
           },
         ],
+        description: "general campaign",
       },
       {
         name: 'Attack on Opponent',
@@ -20,34 +22,65 @@ export default {
           {
             name: 'Neutral Sentiment (Range -0.1 to 0.1)',
             children: [
-              { name: 'Crooked Hillary', value: 22, score: 0, candidate: 'Trump' },
-              { name: 'Trump Yourself', value: 2, score: 0, candidate: 'Clinton'},
+              { name: 'Crooked Hillary', value: 22, score: 0, candidate: 'Trump' ,description: "attack on clinton"},
+              { name: 'Trump Yourself', value: 2, score: 0, candidate: 'Clinton', description: 'attack on trump'},
             ],
+            description: "something",
           },
           { name: 'Negative Sentiment (Less than -0.1)', 
             children: [
-                {name: "Love Trumps Hate", value: 14, score: -0.15, candidate: "Clinton" },
-            ]
+                {name: "Love Trumps Hate", value: 14, score: -0.15, candidate: "Clinton",description: 'attack on trump' },
+            ],
+            description: "some",
           },
         ],
+        description: "some",
       },
       {
         name: 'Delivering Motivated Goal',
-        children: [
-          {
-            name: 'Appeal to Patriotism',
-            children: [
-              { name: 'Negative Sentiment (Less than -0.1)', 
-                children: 
-                    [{name: 'something', value: 78 },
-                    {name: 'another', value: 23}],
-                },
-              { name: "Neutral Sentiment (Range -0.1 to 0.1)",
-                children:
-                    [{name: 'other slogan', value: 12},]}
-            ],
+        children: [    
+          { name: 'Negative Sentiment (Less than -0.1)', 
+            children: 
+                [{name: 'something', value: 78, score:0, candidate: 'Clinton', description: "something"},
+                {name: 'another', value: 23, score:0, candidate: 'Clinton', description: "something"}],
+            description: "some",
+            },
+          { name: "Neutral Sentiment (Range -0.1 to 0.1)",
+            children:
+                [{name: 'Make America Work Again', value: 2, score:0, candidate: "Trump", description: "something"},],
+            description: "some",
           },
+          { name: "Positive Sentiment",
+            children: [
+              {name: "America First", value:74, score:0.25, candidate: 'Trump', description: "something"},
+              {name: "Make America Great Again", value: 648, score:0.6249, candidate: 'Trump', description: "something"},
+              {name: "Make America Safe Again", value: 7, score: 0.4404, candidate: "Trump", description: "something"},
+            ],
+            description: "some",
+          }
         ],
+        description: "some",
       },
-    ]
+      {
+        name: 'Create Sense of Union',
+        children: [
+          { name: 'Neutral Sentiment',
+            children: [
+              {name:'We Made History', value:3, score: 0, candidate: 'Clinton', description: "something"},
+              {name: "I'm with Her", value: 5, score: 0, candidate: 'Clinton', description: "something"},
+              {name: "I'm with You", value: 60, score: 0, candidate: 'Trump', description: "something"},
+            ],
+            description: "some",
+          },
+          { name: 'Positive Sentiment',
+            children: [
+              {name: "Stronger Together", value: 28, score: 0.3818, candidate: 'Clinton', description: "something"}
+            ],
+            description: "some",
+          }
+        ],
+        description: "some",
+      }
+    ],
+    description: "Slogans from both candidates are categorized based on themes. Click on each theme to explore how Trump and Clinton differ in their choice of slogan and think about how those difference might affect their voting results.",
 };
