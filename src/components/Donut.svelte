@@ -52,7 +52,7 @@
   <svg {width} {height} viewBox={`-${width } -${height / 2} ${width * 2.5 + padding * 2} ${height}`}>
     <g class="electoral-votes" transform={`translate(${-width / 3 - padding / 2}, 0)`}>
       {#each arcsElectoral as slice}
-        <path d={arcPathElectoral(slice)} fill={colourScale(slice.data.name)} stroke="white" />
+        <path d={arcPathElectoral(slice)} fill={colourScale(slice.data.name)} stroke='white' />
         <text
           transform={`translate(${arcPathElectoral.centroid(slice)})`}
           text-anchor="middle"
@@ -71,7 +71,7 @@
     </g>
     <g class="popular-vote" transform={`translate(${width / 2 + padding * 5 }, 0)`}>
       {#each arcsPopular as slice}
-        <path d={arcPathPopular(slice)} fill={colourScale(slice.data.name)} stroke="white" />
+        <path d={arcPathPopular(slice)} fill={colourScale(slice.data.name)} stroke='white'/>
         <text
           transform={`translate(${arcPathPopular.centroid(slice)})`}
           text-anchor="middle"

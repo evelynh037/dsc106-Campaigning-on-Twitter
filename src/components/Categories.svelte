@@ -95,7 +95,7 @@
 <div class="chart" bind:clientWidth={width} bind:clientHeight={height}>
 	<svg>
         <!-- Legend -->
-        <g class="legend" transform="translate({width-80}, {padding.top - 60})">
+        <g class="legend" transform="translate({width-130}, {padding.top - 60})">
 			<rect x="0" y="0" width="15" height="15" fill="#ff4500" />
 			<text x="30" y="12" font-size="0.9em">Trump has more</text>
 			<rect x="0" y="20" width="15" height="15" fill="#00bfff" />
