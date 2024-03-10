@@ -197,6 +197,7 @@
 		width: 200px;
 		height: 242px; 
 		padding:10px;
+		font-size: 16px;
 
 	}
 
