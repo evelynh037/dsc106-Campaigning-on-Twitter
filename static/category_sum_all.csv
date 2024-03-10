@@ -2,27 +2,27 @@ category,counts_hc,counts_dt,difference,hc_more,dt_more,topic
 Campaign Event,747,1564,817,0,1,campaign_message
 Campaign Promise,1321,1558,237,0,1,campaign_message
 Name Reference,1689,1450,239,1,0,emotional_word
-Patriotism,487,420,67,1,0,national_identity
+Patriotism,435,420,15,1,0,national_identity
 Employment Issue,293,201,92,1,0,economic_policy
 Uniting Public,413,328,85,1,0,national_identity
 Attack Opponents,9,89,80,0,1,emotional_word
 Endorsement,623,759,136,0,1,emotional_word
 State Matters,140,517,377,0,1,national_identity
 News Media,45,222,177,0,1,campaign_message
-Gender Issue,247,155,92,1,0,demographic_issue
-Policy Proposals,435,368,67,1,0,campaign_message
+Gender Issue,289,162,127,1,0,demographic_issue
+Policy Proposals,367,384,17,0,1,campaign_message
 Foreign Issue,135,244,109,0,1,security_policy
 Economic,246,181,65,1,0,economic_policy
-Justice,215,182,33,1,0,social_issue
+Justice,203,196,7,1,0,social_issue
 Immigration,83,74,9,1,0,security_policy
 Social Security,235,202,33,1,0,security_policy
 Poverty,442,133,309,1,0,social_issue
 Racial Justice,111,59,52,1,0,demographic_issue
-Taxation,63,23,40,1,0,economic_policy
-Trading Policy,122,65,57,1,0,economic_policy
-Millitary,46,52,6,0,1,security_policy
+Taxation,45,24,21,1,0,economic_policy
+Trading Policy,79,106,27,0,1,economic_policy
+Millitary,40,52,12,0,1,security_policy
 Health,158,55,103,1,0,social_issue
 Education,172,40,132,1,0,social_issue
 Environmental Issue,17,45,28,0,1,social_issue
 Population Ageing,38,14,24,1,0,demographic_issue
-LGBTQ,42,7,35,1,0,demographic_issue
+Spanish Tweets,105,1,104,1,0,demographic_issue

@@ -29,7 +29,7 @@ c<script>
   let selected=[];
   let selected_word = ["gun","border","women"];
   let selectedCategory = 'security_policy';
- 
+
   //load data
   onMount(async () => {
     const res = await fetch('slogan_stats.csv');
@@ -85,6 +85,13 @@ c<script>
   $: if (inputText == "") {
     prefix = ""
   }
+
+  function scrollToSection(sectionId) {
+    const section = document.getElementById(sectionId);
+    if (section) {
+      section.scrollIntoView({ behavior: 'smooth' });
+    }
+  }
  </script>
  
  
@@ -107,19 +114,40 @@ c<script>
       bind:progress
     >
       <div slot="foreground">
-        <section class="centered-content">
+        <section class="centered-content"><br><br><br></section>
+        <section id="scrollTargetSection" class="centered-content">
+          <p>Presidential election has always been one of the most spotlighted events in most countries in the world. While many might take the voting procedure differently, the presidential election in the United States is conducted through an especially interesting system, in which two types of votings, <b>popular vote</b> and <b>electoral vote</b> are taken into evaluation. </p>
+          <p>In the US Presidential Election, each state is given different amount of electoral vote based on its population. Then people do popular vote within each state. Whoever wins the popular vote of a state takes all of that state's electoral vote. The winner is whoever receive the most electoral votes.</p>
+          <p>Now you might be thinking that since the amount of electoral vote per state is determined by its population, the winner of popular vote national wise is likely the winner of the electioin. Indeed, often times, that is what happened with US presidential election, but due to uncertainty within this system, sometimes it might not be the case...</p>
+          <p>Let's look at one recent classic example of this... The 2016 presidential election between Hillary Clinton and Donald Trump.</p>
         </section>
         <section class="centered-content">
-          <p>Introduction: Twitter has played an increasingly prominent role in the 2016 US Presidential Election. Debates have raged and candidates have risen and fallen based on tweets. </p>
+          <p>Notice the result of the two votes are different as shown in the chart on the left. While logically speaking this is a possible result, can we make any reasonable explanation as for why in this case, despite the disadvantage in overall popular vote, Trump still won the overall electoral vote? </p>
+          <br>
+          <p>Well, it turns out that one way to explain this is through analyzing what they put more focus on during their presidential campaign, that is, the content of their campaign.</p>
+          <p>Twitter has played an increasingly prominent role in the 2016 US Presidential Election. Debates have raged and candidates have risen and fallen based on tweets. </p>
+          <p>Does their campaign content affect their electoral results?</p>
           <p>This analysis is based on a dataset that provides approximately 3000 recent tweets from Hillary Clinton and Donald Trump, the two major-party presidential nominees. Follow along this article and get insights as to how the candidates' tweets refelct their electoral results.</p>
         </section>
         <section class="centered-content">
           <p>As the most symbolic campaign method, the use of slogan attracts public attention and give impression on the candidates that will influence their voting result. </p>
-          <p>In this section, we will explore some of the most frequently mentioned slogans from each candidate and analyze the frequency of their appearance in the tweets. </p>
+          <p>In this section, we will explore some of the most frequently mentioned slogans from each candidate and analyze their theme, the context in which they ususally appear, and the number of times they appeared in the tweets. </p>
+          <p>Explore with the chart on the left, pay special notice to the description box on the top right to get hint on ways to continue exploration and possible interpretations. As you explore to the last layer, hover over the slogans for more detail.</p>
+        </section>
+        <section class="centered-content">
+          <p><b>Are you able to draw any useful information out of the plot? Let's analyze it together now...</b><p>
+          <p>Looking at the theme of the slogans, while Clinton's focus on building union with voters explains her advantage in popular vote, Trump's focus on using large quantity of imflammatory ambitious goals through patriotic lens definitely brings him more support as well, and constitute as part of the reason why Trump's popular vote does not fall behind too much as compared to Clinton's.</p>
         </section>
         <section class="centered-content">
           <p>Different groups cares about different political topics. Hence, which political issue the candidates draw their focus and campaigned on more than others has an impact on whether they will receive more votes from certain groups of people.</p>
           <p>In this section, we will explore and compare Trump's and Clinton's attention to different political topics through analyzing how often they brought up words relating to each category of political issues in their tweets.</p>
+          <p>Use the plot on the left to explore number of times Trump or Clinton mentioned certain political issues more than the other candidate. Think about the underlying patterns.</p>
+        </section>
+        <section class="centered-content">
+          <p><b>Now let's look at some of the patterns together and analyze how they might affect the election result.</b></p>
+          <p>Pay attention to Clinton's attention to demographic issues like gender and minorities to win public votes among general publics in liberal states. Also noticing that Clinton has a lot of Spanish tweets and in fact, even opened an account for spanish tweets later, to get votes from Spanish speaking region like California and New Mexico. This might explain her victory in popular vote.</p>
+          <p>However, Trump put special focus on serious matters like security issues and highly active with campaign advertisement, those might explain why he got a lot of popular votes too by attracting votes from patriotic groups and conservative states.</p>
+          <p>Considering Clinton spent a great deal of focus on Spanish speaking region with high population, which are not swing states and was considerably democratic states already, that might explain why she fall behind in electoral votes in other states.</p>
         </section>
         <section class="centered-content">
           <div>
@@ -163,6 +191,10 @@ c<script>
   <div class="header">
     <h1 class="sectionHeader">Campaigning on Twitter</h1>
     <p class="introText">Twitter has played an increasingly prominent role in the 2016 US Presidential Election. Debates have raged and candidates have risen and fallen based on tweets. This analysis is based on a dataset that provides approximately 3000 recent tweets from Hillary Clinton and Donald Trump, the two major-party presidential nominees. Follow along this article and get insights as to how the candidates' tweets refelct their electoral results.</p>
+    <div class="scroll-down-container" on:click={() => scrollToSection('scrollTargetSection')}>
+      <div class="arrow arrow1" ></div>
+      <p class="scroll-message">Start Explore</p>
+    </div>
   </div>
  
  
@@ -322,6 +354,42 @@ c<script>
     font-size: 1.25rem;
   }
  }
+
+ @keyframes waveFlash {
+  0%, 100% {
+    border-color: white;
+  }
+  50% {
+    border-color: hsla(0, 0%, 0%, 0); /* Change to your desired flashing color */
+  }
+}
+
+ .arrow {
+  width: 40px;
+  height: 40px;
+  border: solid white;
+  border-width: 0 6px 6px 0;
+  display: inline-block;
+  margin: 0 10px;
+  cursor: pointer;
+  animation: waveFlash 1s infinite;
+}
+.scroll-down-container {
+  position: absolute;
+  bottom: 50px;
+  left: 50%;
+  transform: translateX(-50%);
+  text-align: center;
+}
+.arrow1 {
+  transform: rotate(45deg);
+}
+.scroll-message {
+  color: white;
+  font-size: 20px;
+  margin-top: 10px;
+  white-space: nowrap;
+}
  </style>
  
  

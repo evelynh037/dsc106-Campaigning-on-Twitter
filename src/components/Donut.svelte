@@ -43,7 +43,7 @@
     let progress = tweened(0, { duration: 1000 });
   </script>
 
-{#if index === 1} 
+{#if index === 2} 
 <aside>
     <p><strong>2016 U.S. Presidential Election Outcome</strong></p>
     <p6>Left: Electoral Votes | Right: Popular Vote</p6>

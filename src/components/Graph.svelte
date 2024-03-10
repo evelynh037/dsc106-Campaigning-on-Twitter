@@ -41,8 +41,9 @@
   $: xTicks = generateXTicks(100, 100 / 5);
 </script>
 
-{#if index === 4} 
-  <h2>Proportion of Selected Words In Each Nominee's Tweets </h2>
+{#if index === 7} 
+  <h2>Decomposition of Selected Words in Tweets from two Candidates </h2>
+  <h4>Of all tweets posted by Clinton and Trump that contains the selected word, whose tweets takes larger proportion?</h4>
   <div class="chart" bind:clientWidth={width} bind:clientHeight={height}>
     <svg>
       <g class="legend" transform="translate({width-80}, {padding.top - 60})">
@@ -89,6 +90,9 @@ h2 {
 		text-align: center;
 		font-size: 1.7em;
 	}
+h4 {
+  text-align:center;
+}
 
 	.chart {
 	display: flex;

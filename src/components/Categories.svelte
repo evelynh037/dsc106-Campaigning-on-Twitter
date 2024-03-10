@@ -78,8 +78,8 @@
 </script>
 
 
-{#if index === 3} 
-<h2>Number of Tweets in Different Topics</h2>
+{#if index === 5 || index === 6} 
+<h2>Difference in Number of Tweets in Different Topics</h2>
 <div style="margin-left: 50px;">
 	<label for="categorySelect" style="font-size: 1.0em;">Select Category:</label>
 	<select id="categorySelect" style="font-size: 0.9em; height: 2em; width: 15em;" bind:value={selectedCategory} on:change="{() => updateChart(selectedCategory)}">
@@ -97,9 +97,9 @@
         <!-- Legend -->
         <g class="legend" transform="translate({width-80}, {padding.top - 60})">
 			<rect x="0" y="0" width="15" height="15" fill="#ff4500" />
-			<text x="30" y="12" font-size="0.9em">Trump</text>
+			<text x="30" y="12" font-size="0.9em">Trump has more</text>
 			<rect x="0" y="20" width="15" height="15" fill="#00bfff" />
-			<text x="30" y="32" font-size="0.9em">Hillary</text>
+			<text x="30" y="32" font-size="0.9em">Clinton has more</text>
 		  </g>
 
 		<!-- y axis -->

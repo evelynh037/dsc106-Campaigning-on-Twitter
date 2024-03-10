@@ -1,86 +1,101 @@
 export default {
-    name: 'All Slogans Overview',
-    children: [
-      {
-        name: 'General Campaign',
-        children: [
-          {
-            name: 'Neutral Sentiment (Range -0.1 to 0.1)',
-            children: [
-              { name: 'Trump Train', value: 31, score: 0, candidate: 'Trump', description: "This slogan is used by Trump's supporters"},
-              { name: 'Trump 2016', value: 343, score: 0, candidate: 'Trump', description: "This is a general campaign slogan" },
-              { name: 'Clinton 2016', value: 2, score:0, candidate: 'Clinton', description: "another general campaign slogan"},
-            ],
-            description: "Sentiment neutral",
-          },
-        ],
-        description: "general campaign",
-      },
-      {
-        name: 'Attack on Opponent',
-        children: [
-          {
-            name: 'Neutral Sentiment (Range -0.1 to 0.1)',
-            children: [
-              { name: 'Crooked Hillary', value: 22, score: 0, candidate: 'Trump' ,description: "attack on clinton"},
-              { name: 'Trump Yourself', value: 2, score: 0, candidate: 'Clinton', description: 'attack on trump'},
-            ],
-            description: "something",
-          },
-          { name: 'Negative Sentiment (Less than -0.1)', 
-            children: [
-                {name: "Love Trumps Hate", value: 14, score: -0.15, candidate: "Clinton",description: 'attack on trump' },
-            ],
-            description: "some",
-          },
-        ],
-        description: "some",
-      },
-      {
-        name: 'Delivering Motivated Goal',
-        children: [    
-          { name: 'Negative Sentiment (Less than -0.1)', 
-            children: 
-                [{name: 'something', value: 78, score:0, candidate: 'Clinton', description: "something"},
-                {name: 'another', value: 23, score:0, candidate: 'Clinton', description: "something"}],
-            description: "some",
-            },
-          { name: "Neutral Sentiment (Range -0.1 to 0.1)",
-            children:
-                [{name: 'Make America Work Again', value: 2, score:0, candidate: "Trump", description: "something"},],
-            description: "some",
-          },
-          { name: "Positive Sentiment",
-            children: [
-              {name: "America First", value:74, score:0.25, candidate: 'Trump', description: "something"},
-              {name: "Make America Great Again", value: 648, score:0.6249, candidate: 'Trump', description: "something"},
-              {name: "Make America Safe Again", value: 7, score: 0.4404, candidate: "Trump", description: "something"},
-            ],
-            description: "some",
-          }
-        ],
-        description: "some",
-      },
-      {
-        name: 'Create Sense of Union',
-        children: [
-          { name: 'Neutral Sentiment',
-            children: [
-              {name:'We Made History', value:3, score: 0, candidate: 'Clinton', description: "something"},
-              {name: "I'm with Her", value: 5, score: 0, candidate: 'Clinton', description: "something"},
-              {name: "I'm with You", value: 60, score: 0, candidate: 'Trump', description: "something"},
-            ],
-            description: "some",
-          },
-          { name: 'Positive Sentiment',
-            children: [
-              {name: "Stronger Together", value: 28, score: 0.3818, candidate: 'Clinton', description: "something"}
-            ],
-            description: "some",
-          }
-        ],
-        description: "some",
-      }
-    ],
-    description: "Slogans from both candidates are categorized based on themes. Click on each theme to explore how Trump and Clinton differ in their choice of slogan and think about how those difference might affect their voting results.",
+  name: 'All Slogans Overview',
+  children: [
+    {
+      name: 'General Campaign',
+      children: [
+        {
+          name: 'Neutral Sentiment (Range -0.1 to 0.1)',
+          children: [
+            { name: 'Hillary 2016', value: 2, score: 0, candidate: 'Clinton', description: "Clinton's vote campaign slogan" },
+          ],
+          description: "This contains slogans used in tweets that have a median compound sentiment score that's between 0.1 and -0.1. Hover slogans for more detail.",
+        },
+        {
+          name: 'Positive Sentiment',
+          children: [
+            { name: 'She Won', value: 5, score: 0.2793, candidate: "Clinton", description: "Slogan that boosts the confidence of voters after debate victory" },
+            { name: 'Trump Train', value: 37, score: 0.3987, candidate: 'Trump', description: "Slogan that conveys support for Trump's campaign" },
+            { name: 'Trump 2016', value: 348, score: 0.3786, candidate: 'Trump', description: "Trump's vote campaign slogan" },
+            { name: 'ClintonKaine', value: 2, score: 0.4063, candidate: 'Clinton', description: "Clinton's admission team slogan" }
+          ],
+          description: "This contains slogans used in tweets that have a median compound sentiment score that's above 0.1. Hover slogans for more detail."
+        }
+      ],
+      description: "This is the most general category that attracts votes through a direct voting message that has no meaning beyond the general campaign. Relatively positive sentiment, and Trump outnumbered Clinton in counts.",
+    },
+    {
+      name: 'Attack on Opponent',
+      children: [
+        {
+          name: 'Neutral Sentiment (Range -0.1 to 0.1)',
+          children: [
+            { name: 'Crooked Hillary', value: 22, score: 0, candidate: 'Trump', description: "Trump's attack on Clinton's policy" },
+          ],
+          description: "This contains slogans used in tweets that have a median compound sentiment score that's between 0.1 and -0.1. Hover slogans for more detail.",
+        },
+        {
+          name: 'Negative Sentiment (Less than -0.1)',
+          children: [
+            { name: 'Trump Yourself', value: 2, score: -0.1313, candidate: 'Clinton', description: "hashtag for supporters to attack Trump's policy" },
+            { name: "Love Trumps Hate", value: 14, score: -0.15, candidate: "Clinton", description: "Conveys unity while attacking Trump's campaign with irony" },
+          ],
+          description: "This contains slogans used in tweets that have a median compound sentiment score that's below -0.1. Hover slogans for more detail.",
+        },
+      ],
+      description: "This is a common category of slogans that aim to attract votes by speaking negatively about opponents. Most slogans in this category are used under a relatively negative context, with about an equal amount of usage by both candidates in their tweets.",
+    },
+    {
+      name: 'Delivering Motivated Goal',
+      children: [
+        {
+          name: "Neutral Sentiment (Range -0.1 to 0.1)",
+          children: [
+            { name: 'Make America Work Again', value: 2, score: 0, candidate: "Trump", description: "Political goal as a campaign promise on unemployment" },
+          ],
+          description: "This contains slogans used in tweets that have a median compound sentiment score that's between 0.1 and -0.1. Hover slogans for more detail.",
+        },
+        {
+          name: "Positive Sentiment",
+          children: [
+            { name: "America First", value: 74, score: 0.4199, candidate: 'Trump', description: "Patriotic campaign goal that boosts national ambition" },
+            { name: "Make America Great Again", value: 648, score: 0.6249, candidate: 'Trump', description: "Primary slogan used by Trump that boosts patriotic ambition" },
+            { name: "Make America Safe Again", value: 7, score: 0.4404, candidate: "Trump", description: "Political goal as a campaign promise on security" },
+          ],
+          description: "This contains slogans used in tweets that have a median compound sentiment score that's above 0.1. Hover slogans for more detail.",
+        }
+      ],
+      description: "Slogans in this category aim to actively attract votes through motivations like ambitious goals and patriotism. The sentiments are relatively positive and dominated by Trump.",
+    },
+    {
+      name: 'Create Sense of Union',
+      children: [
+        {
+          name: 'Neutral Sentiment',
+          children: [
+            { name: "I'm with Her", value: 18, score: 0.0644, candidate: 'Clinton', description: "Slogan conveying the momentum of Clinton's supporters" },
+            { name: "I'm with You", value: 60, score: 0, candidate: 'Trump', description: "Building a sense of union with voters" },
+          ],
+          description: "This contains slogans used in tweets that have a median compound sentiment score that's between 0.1 and -0.1. Hover slogans for more detail.",
+        },
+        {
+          name: 'Positive Sentiment',
+          children: [
+            { name: "We Made History", value: 3, score: 0.1738, candidate: 'Clinton', description: "Slogan Clinton used to cheer up voters" },
+            { name: "Stronger Together", value: 28, score: 0.3818, candidate: 'Clinton', description: "Slogan used to create momentum and boost confidence" }
+          ],
+          description: "This contains slogans used in tweets that have a median compound sentiment score that's above 0.1. Hover slogans for more detail.",
+        },
+        {
+          name: 'Negative Sentiment',
+          children: [
+            { name: "Fight For Families", value: 4, score: -0.125, candidate: 'Clinton', description: "Build bond by siding with the general public" }
+          ],
+          description: "This contains slogans used in tweets that have a median compound sentiment score that's below -0.1. Hover slogans for more detail."
+        }
+      ],
+      description: "Slogans in this category aim to attract votes with bonding through creating a sense of union among and with voters. Clinton put more focus on this.",
+    }
+  ],
+  description: "Click on each theme to explore how Trump and Clinton differ in their choice of slogans and think about how those differences might affect their voting results.",
 };
