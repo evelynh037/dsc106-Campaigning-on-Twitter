@@ -90,6 +90,7 @@
 	const tooltipPaddingLeft = 15;
 	const tooltipLineHeight = 36;
 	let mousePosition = [0, 0];
+	
 	function recordMousePosition(event) {
 		mousePosition = d3.pointer(event);
 	}
@@ -105,9 +106,9 @@
 			<tspan x="0" dy="1.2em">Candidate: ${circle.data.candidate}</tspan>
 			<tspan x="0" dy="1.2em">${circle.data.description}</tspan>
 		`;
-
-		tooltipBox.style.left = `${mousePosition[0]}px`;
-		tooltipBox.style.top = `${mousePosition[1]}px`;
+		
+		tooltipBox.style.left = `{mousePosition[0]}px`;
+		tooltipBox.style.top = `{mousePosition[1]}px`;
 		tooltipBox.style.width = tooltipW;
 		tooltipBox.style.visibility = 'visible';
 	}
@@ -157,9 +158,9 @@
 				>{rootDes.data.name}</text>
 			{/each}
 		</g>
-		<g class="tooltip-box" id="tooltip-box" style="visibility: hidden;" transform="translate({mousePosition[0] - tooltipW - 5},{mousePosition[1]})">
+		<g class="tooltip-box" id="tooltip-box" style="visibility: hidden;" transform="translate({mousePosition[0]},{mousePosition[1]})">
 			<rect width={tooltipW+130} height={tooltipH} fill="#D3D3D3" stroke="grey"></rect>
-			<text class="tooltip-text" x={xCoordinate + 10} y={yCoordinate} font-size="14px"></text>
+			<text class="tooltip-text" x="0" y="0" font-size="14px"></text>
 		</g>
 	</svg>
 	<div class="description-container">
@@ -215,7 +216,7 @@
 
 	.tooltip-box{
 		position: relative;
-  		z-index: 1;
+		pointer-events: none; 
 		/* Prevents the tooltip from interfering with mouse events */
 	}
 	.node {
