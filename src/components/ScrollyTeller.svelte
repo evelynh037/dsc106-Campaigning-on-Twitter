@@ -127,7 +127,6 @@ c<script>
           <p>Well, it turns out that one way to explain this is through analyzing what they put more focus on during their presidential campaign, that is, the content of their campaign.</p>
           <p>Twitter has played an increasingly prominent role in the 2016 US Presidential Election. Debates have raged and candidates have risen and fallen based on tweets. </p>
           <p>Does their campaign content affect their electoral results?</p>
-          <p>This analysis is based on a dataset that provides approximately 3000 recent tweets from Hillary Clinton and Donald Trump, the two major-party presidential nominees. Follow along this article and get insights as to how the candidates' tweets refelct their electoral results.</p>
         </section>
         <section class="centered-content">
           <p>As the most symbolic campaign method, the use of slogan attracts public attention and give impression on the candidates that will influence their voting result. </p>
