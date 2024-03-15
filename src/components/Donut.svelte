@@ -1,6 +1,8 @@
 <script>
   import * as d3 from "d3";
+  import { onMount } from 'svelte';
   export let index;
+  let isMounted = false;
   import { tweened } from 'svelte/motion';
 
   let data = [
@@ -8,6 +10,11 @@
     { name: "Donald Trump", electoralVotes: 304, popularVotePercentage: 46.1 },
     { name: "Others", electoralVotes: 7, popularVotePercentage: 5.7 }
   ];
+
+  onMount(() => {
+    // Set isMounted to true after the component has been mounted
+    isMounted = true;
+  });
 
   const width = 200;
   const height = 200;
@@ -48,13 +55,13 @@
   }
 </script>
 
-{#if index === 2} 
-<aside>
+{#if index === 2 && isMounted} 
+<aside class = 'fade-in'>
   <p><strong>2016 U.S. Presidential Election Outcome</strong></p>
   <p6>Left: Electoral Votes | Right: Popular Vote</p6>
 </aside>
 <div class="chart">
-<svg {width} {height} viewBox={`-${width } -${height / 2} ${width * 2.5 + padding * 2} ${height}`}>
+<svg class = "fade-in" {width} {height} viewBox={`-${width } -${height / 2} ${width * 2.5 + padding * 2} ${height}`}>
   <g class="electoral-votes" transform={`translate(${-width / 3 - padding / 2}, 0)`}>
     {#each arcsElectoral as slice}
       <path d={d3.arc().innerRadius(0).outerRadius(getRadius(slice.data.name, true))(slice)} fill={colourScale(slice.data.name)} stroke="white" />
@@ -119,6 +126,27 @@ p6 {
   svg {
     width: 100%;
     height: 500px;
+  }
+
+  @keyframes fadeInAnimation {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+
+  /* Apply fade-in animation only when component is mounted */
+  .fade-in {
+    opacity: 0;
+    animation: fadeInAnimation 1s ease-in forwards;
+  }
+
+  /* Delay fade-in animation until component is mounted */
+  .fade-in-delayed {
+    opacity: 0;
+    animation: fadeInAnimation 1s ease-in forwards;
   }
 </style>
   

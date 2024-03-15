@@ -1,4 +1,4 @@
-c<script>
+<script>
   import Scroller from "@sveltejs/svelte-scroller";
   import { onMount } from 'svelte';
   import * as d3 from 'd3';
@@ -97,10 +97,10 @@ c<script>
  
   <div class="left-panel">
     <div class=graph-container>
-    <Donut {index}/>
-    <Slogan {index}/>
-    <Categories {index} {selectedCategory}/>
-    <Graph {index} {filtered_hillary} {filtered_trump} {selected_word}/>
+    <Donut {index} />
+    <Slogan {index} />
+    <Categories {index} {selectedCategory} />
+    <Graph {index} {filtered_hillary} {filtered_trump} {selected_word} />
   </div>
   </div>
   <div class="right-panel">
@@ -389,6 +389,20 @@ c<script>
   font-size: 20px;
   margin-top: 10px;
   white-space: nowrap;
+}
+
+.fade-in {
+  opacity: 0;
+  animation: fadeInAnimation 1s ease-in forwards;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }
  </style>
  

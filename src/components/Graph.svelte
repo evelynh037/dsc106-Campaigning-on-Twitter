@@ -1,9 +1,17 @@
 <script>
   import { scaleBand, scaleLinear } from 'd3-scale';
   export let index, filtered_trump, filtered_hillary, selected_word;
+  import { onMount } from 'svelte';
+
+  let isMounted = false;
   let width = 500;
   let height = 300;
   const padding = { top: 70, right: 50, bottom: 30, left: 50 };
+
+  onMount(() => {
+		// Set isMounted to true after the component has been mounted
+		isMounted = true;
+	});
 
   // Combine the two and assign with category for bars
   $: combinedData = [
@@ -41,7 +49,8 @@
   $: xTicks = generateXTicks(100, 100 / 5);
 </script>
 
-{#if index === 7} 
+{#if index === 7 && isMounted} 
+  <div class='fade-in'>
   <h2>Decomposition of Selected Words in Tweets from two Candidates </h2>
   <h4>Of all tweets posted by Clinton and Trump that contains the selected word, whose tweets takes larger proportion?</h4>
   <div class="chart" bind:clientWidth={width} bind:clientHeight={height}>
@@ -81,6 +90,7 @@
       </g>
       
     </svg>
+  </div>
   </div>
 {/if}
 
@@ -135,10 +145,30 @@ h4 {
     from {
         width: 0;
     }
-   
-}
+  }
 
-.grow {
-    animation: grow 1s ease-out;
-}
+  .grow {
+      animation: grow 1s ease-out;
+  }
+
+  @keyframes fadeInAnimation {
+		from {
+		opacity: 0;
+		}
+		to {
+		opacity: 1;
+		}
+	}
+
+	/* Apply fade-in animation only when component is mounted */
+	.fade-in {
+		opacity: 0;
+		animation: fadeInAnimation 1s ease-in forwards;
+	}
+
+	/* Delay fade-in animation until component is mounted */
+	.fade-in-delayed {
+		opacity: 0;
+		animation: fadeInAnimation 1s ease-in forwards;
+	}
 </style>

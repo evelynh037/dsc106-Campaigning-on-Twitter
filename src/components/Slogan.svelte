@@ -1,14 +1,22 @@
 <script>
-  import { hierarchy, interpolateHcl, interpolateZoom, pack, scaleLinear, scaleOrdinal, transition } from 'd3';
-  export let index;
+  	import { hierarchy, interpolateHcl, interpolateZoom, pack, scaleLinear, scaleOrdinal, transition } from 'd3';
+  	export let index;
+  	import { onMount } from 'svelte';
 	import data from './SloganData';
 	import * as d3 from 'd3';
+
+	let isMounted = false;
 	const width = 600; //the outer width of the chart, in pixels
 	const height = width; // the outer height of the chart, in pixels
 	const margin = 20; //the overall margin between the circle packs to the viewport edge
 	const backgroundColor = 'transparent'; // the background color of the chart
 	const fontSize = 15; //the font size of the text labels
 	const padding = { top: 70, right: 50, bottom: 30, left: 50 };
+
+	onMount(() => {
+		// Set isMounted to true after the component has been mounted
+		isMounted = true;
+	});
 
 	const color = scaleLinear()
 		.domain([0, 5])
@@ -119,7 +127,8 @@
 	};
 </script>
 
-{#if index === 3 || index === 4} 
+{#if (index === 3 || index === 4) && isMounted } 
+  <div class = 'fade-in'>
 	<h2>Slogans in Tweets Analysis</h2>
 	<svg class="chart" width={width} height={height} style="background: {backgroundColor};" on:click={(e) => {zoom(root, e); showDescription(root)}} on:pointermove={recordMousePosition}   >
 		<g class="legend" transform="translate({width-80}, {padding.top - 60})">
@@ -170,6 +179,7 @@
 		<p>Description: {defaultData.description}</p>
 	</div>
 	</div>
+  </div>
 {/if}
 
 <style>
@@ -238,5 +248,26 @@
 	.node--root,
 	.node--leaf {
 		
+	}
+
+	@keyframes fadeInAnimation {
+		from {
+		opacity: 0;
+		}
+		to {
+		opacity: 1;
+		}
+	}
+
+	/* Apply fade-in animation only when component is mounted */
+	.fade-in {
+		opacity: 0;
+		animation: fadeInAnimation 1s ease-in forwards;
+	}
+
+	/* Delay fade-in animation until component is mounted */
+	.fade-in-delayed {
+		opacity: 0;
+		animation: fadeInAnimation 1s ease-in forwards;
 	}
 </style>
