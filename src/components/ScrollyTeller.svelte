@@ -125,18 +125,21 @@
           <br>
           <p>Well, it turns out that one way to explain this is through analyzing what they put more focus on during their presidential campaign, that is, the content of their campaign.</p>
           <p>Twitter has played an increasingly prominent role in the 2016 US Presidential Election. Debates have raged and candidates have risen and fallen based on tweets. </p>
-          <p>Does their campaign content affect their electoral results?</p>
+          <p>Now on to the problem: <b>Does their campaign content affect their electoral results?</b></p>
         </section>
         <section class="centered-content">
+          <h3>Slogans, Slogans... The power of public impression</h3>
           <p>As the most symbolic campaign method, the use of slogan attracts public attention and give impression on the candidates that will influence their voting result. </p>
           <p>In this section, we will explore some of the most frequently mentioned slogans from each candidate and analyze their theme, the context in which they ususally appear, and the number of times they appeared in the tweets. </p>
           <p><u><b>Instructions:</b></u> Explore with the chart on the left, pay special notice to the description box on the top right to get hint on ways to continue exploration and possible interpretations. As you explore to the last layer, click on individual bubbles and hover over the slogan bubbles for more detail.</p>
         </section>
         <section class="centered-content">
           <p><b>Are you able to draw any useful information out of the plot? Let's analyze it together now...</b><p>
+          <p>Wow, there's suprisingly good amount of red dominant the bubble chart! Someone knew how to advertise...</p>
           <p>Looking at the theme of the slogans, while Clinton's focus on building union with voters explains her advantage in popular vote, Trump advertised way more times of slogans relating to his general campaign, assisting the fame and popularity of his campaign as well. Moreover, Trump's focus on using large quantity of imflammatory ambitious goals through patriotic lens definitely brings him more support, and constitute as part of the reason why Trump's popular vote does not fall behind too much as compared to Clinton's.</p>
         </section>
         <section class="centered-content">
+          <h3>Curious about content breakdown? Sure here's more!</h3>
           <p>Different groups cares about different political topics. Hence, which political issue the candidates draw their focus and campaigned on more than others has an impact on whether they will receive more votes from certain groups of people.</p>
           <p>In this section, we will explore and compare Trump's and Clinton's attention to different political topics through analyzing how often they brought up words relating to each category of political issues in their tweets.</p>
           <p><u><b>Instructions:</b></u> Use the plot on the left to explore number of times Trump or Clinton mentioned certain political issues more than the other candidate. Think about the underlying patterns. Hover over each bar to get more detailed counts of each topic.</p>
@@ -150,7 +153,7 @@
         <section class="centered-content">
           <div>
             <div class="centered-content">
-            <p><b>Time to verify your hypothesis and PLAY AROUND!</b></p>
+            <h3>Now Your Time! Verify your hypothesis and PLAY AROUND!</h3>
             <p>Now that you have some idea about which topics each candidate spent more focus on. For instance, Clinton takes advantage of her identity and mentioned gender issue with words like "women" three times more than Trump to win supports from general publics with same identity.</p>
             <p>For example, in previous section we see Trump focus on security and international issues more than Clinton, and Clinton focus more on demographic issues. The example words on the left matches with this pattern, and displays closer view on specific words in different topics.</p>
           </div>

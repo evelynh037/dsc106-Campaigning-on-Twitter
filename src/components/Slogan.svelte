@@ -124,7 +124,7 @@
 		const svgWidth = svgRect.width;
 		
 		// Check if there's not enough room on the right, then position tooltip on the left
-		if (tooltipX > svgWidth) {
+		if (tooltipX > 300) {
 			tooltipX = mousePosition[0] - tooltipW - 10; // subtract tooltip width and some padding
 		}
 		
