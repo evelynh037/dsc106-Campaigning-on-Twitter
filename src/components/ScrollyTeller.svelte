@@ -130,7 +130,7 @@
         <section class="centered-content">
           <p>As the most symbolic campaign method, the use of slogan attracts public attention and give impression on the candidates that will influence their voting result. </p>
           <p>In this section, we will explore some of the most frequently mentioned slogans from each candidate and analyze their theme, the context in which they ususally appear, and the number of times they appeared in the tweets. </p>
-          <p><u><b>Instructions:</b></u> Explore with the chart on the left, pay special notice to the description box on the top right to get hint on ways to continue exploration and possible interpretations. As you explore to the last layer, hover over the slogans for more detail.</p>
+          <p><u><b>Instructions:</b></u> Explore with the chart on the left, pay special notice to the description box on the top right to get hint on ways to continue exploration and possible interpretations. As you explore to the last layer, click on individual bubbles and hover over the slogan bubbles for more detail.</p>
         </section>
         <section class="centered-content">
           <p><b>Are you able to draw any useful information out of the plot? Let's analyze it together now...</b><p>

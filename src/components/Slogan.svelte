@@ -43,6 +43,7 @@
 	let activeZoomB = root.y;
 	let selectedCircle;
 	let descriptionBox;
+	let tooltipBox;
 	let tooltip = {innerHTML:"", visibility: 'hidden', x: 0, y: 0  };
 	let xCoordinate = 0;
 	let yCoordinate = 0;
@@ -92,7 +93,7 @@
 
 	};
 
-	const tooltipW = 180;
+	const tooltipW = 210;
 	const tooltipH = 100;
 	const tooltipPaddingTop = 30;
 	const tooltipPaddingLeft = 15;
@@ -115,8 +116,20 @@
 			<tspan x="0" dy="1.2em">${circle.data.description}</tspan>
 		`;
 		
-		tooltipBox.style.left = `{mousePosition[0]}px`;
-		tooltipBox.style.top = `{mousePosition[1]}px`;
+		let tooltipX = mousePosition[0];
+		let tooltipY = mousePosition[1];
+		const tooltipWidth = tooltipBox.offsetWidth;
+		
+		const svgRect = document.querySelector('.chart').getBoundingClientRect();
+		const svgWidth = svgRect.width;
+		
+		// Check if there's not enough room on the right, then position tooltip on the left
+		if (tooltipX > svgWidth) {
+			tooltipX = mousePosition[0] - tooltipW - 10; // subtract tooltip width and some padding
+		}
+		
+		tooltipBox.style.left = `${tooltipX}px`;
+		tooltipBox.style.top = `${tooltipY}px`;
 		tooltipBox.style.width = tooltipW;
 		tooltipBox.style.visibility = 'visible';
 	}
@@ -167,8 +180,8 @@
 				>{rootDes.data.name}</text>
 			{/each}
 		</g>
-		<g class="tooltip-box" id="tooltip-box" style="visibility: hidden;" transform="translate({mousePosition[0]},{mousePosition[1]})">
-			<rect width={tooltipW+130} height={tooltipH} fill="#D3D3D3" stroke="grey"></rect>
+		<g class="tooltip-box" bind:this={tooltipBox} id="tooltip-box" style="visibility: hidden;" transform="translate({mousePosition[0]},{mousePosition[1]})">
+			<rect width={tooltipW+170} height={tooltipH} fill="#D3D3D3" stroke="grey"></rect>
 			<text class="tooltip-text" x="0" y="0" font-size="14px"></text>
 		</g>
 	</svg>
