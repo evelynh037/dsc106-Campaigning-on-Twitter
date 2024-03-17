@@ -49,7 +49,7 @@
   $: xTicks = generateXTicks(100, 100 / 5);
 </script>
 
-{#if index === 7 && isMounted} 
+{#if (index === 7 || index === 8) && isMounted} 
   <div class='fade-in'>
   <h2>Decomposition of Selected Words in Tweets from two Candidates </h2>
   <h4>Of all tweets posted by Clinton and Trump that contains the selected word, whose tweets takes larger proportion?</h4>

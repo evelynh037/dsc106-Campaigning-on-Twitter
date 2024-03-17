@@ -27,7 +27,7 @@
   let selected_length = 0;
   let is_there = false;
   let selected=[];
-  let selected_word = ["gun","border","women"];
+  let selected_word = ["bomb","border","women"];
   let selectedCategory = 'security_policy';
 
   //load data
@@ -116,10 +116,9 @@
       <div slot="foreground">
         <section class="centered-content"><br><br><br></section>
         <section id="scrollTargetSection" class="centered-content">
-          <p>Presidential election has always been one of the most spotlighted events in most countries in the world. While many might take the voting procedure differently, the presidential election in the United States is conducted through an especially interesting system, in which two types of votings, <b>popular vote</b> and <b>electoral vote</b> are taken into evaluation. </p>
-          <p>In the US Presidential Election, each state is given different amount of electoral vote based on its population. Then people do popular vote within each state. Whoever wins the popular vote of a state takes all of that state's electoral vote. The winner is whoever receive the most electoral votes.</p>
-          <p>Now you might be thinking that since the amount of electoral vote per state is determined by its population, the winner of popular vote national wise is likely the winner of the electioin. Indeed, often times, that is what happened with US presidential election, but due to uncertainty within this system, sometimes it might not be the case...</p>
-          <p>Let's look at one recent classic example of this... The 2016 presidential election between Hillary Clinton and Donald Trump.</p>
+          <p>The presidential election in the United States is conducted through an especially interesting system, in which two types of voting, popular vote and electoral vote are taken into evaluation. Each state is given a different amount of electoral votes based on its population. Then people do popular vote within each state. Whoever wins the popular vote of a state takes all of that state's electoral vote. The winner is whoever receives the most electoral votes.</p>
+          <p><b>Does winner of popular vote wins the actual election?</b></p>
+          <p>Now you might be thinking that since the amount of electoral votes per state is determined by its population, the winner of the popular vote national-wise is likely the winner of the election. But due to uncertainty within this system, sometimes it might not be the case... The 2016 presidential election between Hillary Clinton and Donald Trump is a classic example and let's dive into the reason together</p>
         </section>
         <section class="centered-content">
           <p>Notice the result of the two votes are different as shown in the chart on the left. While logically speaking this is a possible result, can we make any reasonable explanation as for why in this case, despite the disadvantage in overall popular vote, Trump still won the overall electoral vote? </p>
@@ -131,16 +130,16 @@
         <section class="centered-content">
           <p>As the most symbolic campaign method, the use of slogan attracts public attention and give impression on the candidates that will influence their voting result. </p>
           <p>In this section, we will explore some of the most frequently mentioned slogans from each candidate and analyze their theme, the context in which they ususally appear, and the number of times they appeared in the tweets. </p>
-          <p>Explore with the chart on the left, pay special notice to the description box on the top right to get hint on ways to continue exploration and possible interpretations. As you explore to the last layer, hover over the slogans for more detail.</p>
+          <p><u><b>Instructions:</b></u> Explore with the chart on the left, pay special notice to the description box on the top right to get hint on ways to continue exploration and possible interpretations. As you explore to the last layer, hover over the slogans for more detail.</p>
         </section>
         <section class="centered-content">
           <p><b>Are you able to draw any useful information out of the plot? Let's analyze it together now...</b><p>
-          <p>Looking at the theme of the slogans, while Clinton's focus on building union with voters explains her advantage in popular vote, Trump's focus on using large quantity of imflammatory ambitious goals through patriotic lens definitely brings him more support as well, and constitute as part of the reason why Trump's popular vote does not fall behind too much as compared to Clinton's.</p>
+          <p>Looking at the theme of the slogans, while Clinton's focus on building union with voters explains her advantage in popular vote, Trump advertised way more times of slogans relating to his general campaign, assisting the fame and popularity of his campaign as well. Moreover, Trump's focus on using large quantity of imflammatory ambitious goals through patriotic lens definitely brings him more support, and constitute as part of the reason why Trump's popular vote does not fall behind too much as compared to Clinton's.</p>
         </section>
         <section class="centered-content">
           <p>Different groups cares about different political topics. Hence, which political issue the candidates draw their focus and campaigned on more than others has an impact on whether they will receive more votes from certain groups of people.</p>
           <p>In this section, we will explore and compare Trump's and Clinton's attention to different political topics through analyzing how often they brought up words relating to each category of political issues in their tweets.</p>
-          <p>Use the plot on the left to explore number of times Trump or Clinton mentioned certain political issues more than the other candidate. Think about the underlying patterns.</p>
+          <p><u><b>Instructions:</b></u> Use the plot on the left to explore number of times Trump or Clinton mentioned certain political issues more than the other candidate. Think about the underlying patterns. Hover over each bar to get more detailed counts of each topic.</p>
         </section>
         <section class="centered-content">
           <p><b>Now let's look at some of the patterns together and analyze how they might affect the election result.</b></p>
@@ -151,10 +150,18 @@
         <section class="centered-content">
           <div>
             <div class="centered-content">
+            <p><b>Time to verify your hypothesis and PLAY AROUND!</b></p>
             <p>Now that you have some idea about which topics each candidate spent more focus on. For instance, Clinton takes advantage of her identity and mentioned gender issue with words like "women" three times more than Trump to win supports from general publics with same identity.</p>
-            <p>Type in a word to see how many time it appears in each nominees' tweet</p>
+            <p>For example, in previous section we see Trump focus on security and international issues more than Clinton, and Clinton focus more on demographic issues. The example words on the left matches with this pattern, and displays closer view on specific words in different topics.</p>
+          </div>
+          </div>
+        </section>
+        <section class="centered-content">
+          <div>
+            <div class="centered-content">
+            <p>Type in a word to see how many time it appears in each nominees' tweet. Explore maximum of 3 words at a time. You can click on the blue bottom to remove the specified word, use the textbox to search and add new words by clicking on dropbox.</p>
             <p>Remember, the frequency is out of ~3000 tweets for each of them. And is counting how many tweets contained the word of your choice </p>
-            <p>Take your time to explore the topic you want! </p>
+            <p>Take your time to explore the topic you want! Explore maximum of 3 words at a time.</p>
             <p>You've selected: </p>
             {#each selected_word as word}
             <button class="button-53" on:click={() => handleDelete(word)}>{word}</button>
@@ -182,6 +189,14 @@
           </div>
           </div>
         </section>
+        <section class = 'centered-content'>
+        <p><b>So... What do we learn? Why did Trump won election despite disadvantage in overall popular vote?</b></p>
+        <p>While both candidates made efforts to unite voters and establish connections during their campaigns, Trump also emphasized broader political issues such as diplomatic relations and national identity, instead of solely focusing on social issues as Clinton did. This may explain why Trump secured more final electoral votes.</p>
+        <p>So in short...</p>
+        <p><b>Winning overall popular vote does not guarantee final victory in US election</b></p>
+        <p><b>Uniting the voters is as important as advertising visions on serious international and domestic policies for a successful campaign</b></p>
+        <p><b>And ... Just like in life, getting control on broader picture prevails over expertise on one specific area is how things go in electoral campaign.</b></p>
+        </section>
       </div>
     </Scroller>
   </div>
@@ -191,6 +206,7 @@
     <h1 class="sectionHeader">Campaigning on Twitter</h1>
     <p class="introText">Twitter has played an increasingly prominent role in the 2016 US Presidential Election. Debates have raged and candidates have risen and fallen based on tweets. This analysis is based on a dataset that provides approximately 3000 recent tweets from Hillary Clinton and Donald Trump, the two major-party presidential nominees. Follow along this article and get insights as to how the candidates' tweets refelct their electoral results.</p>
     <p class="author">Author: Evelyn Huang, Feiyang Jiang</p>
+    <a href="https://youtu.be/8z-ffypoqEg">Click to see Demo Video</a>
     <div class="scroll-down-container" on:click={() => scrollToSection('scrollTargetSection')}>
       <div class="arrow arrow1" ></div>
       <p class="scroll-message">Start Explore</p>
