@@ -1,4 +1,6 @@
 #  A Comparative Analysis of Twitter Campaign Strategies in the 2016 U.S. Presidential Election
+website: https://evelynh037.github.io/dsc106-final-graph/
+demo video: https://youtu.be/8z-ffypoqEg?feature=shared
 ## Project Overview:
 
 The presidential election in 2016 between the republican candidate Donald Trump and democratic candidate Hillary Clinton has been one of the elections in recent decades that received most attention, and ended in the result of Trump winning in electoral votes and Clinton winning in popular votes. A crucial aspect of their campaigns was the use of Twitter as a primary communication tool. In this project we are going to analyze and dive into the reasons for the electoral results of the two candidates by analyzing the topics they focus more about in the tweets they posted during the election and interpret how the difference in the topic they pay attention to might have an impact on the results. We will be using the following dataset that contains the 3000 tweets from each candidate during the election period (https://www.kaggle.com/datasets/benhamner/clinton-trump-tweets), and we will be analyzing the frequency of certain keywords in their tweets.
